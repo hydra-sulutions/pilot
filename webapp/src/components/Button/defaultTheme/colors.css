@@ -9,7 +9,7 @@
   }
 }
 
-.normal {
+.light-normal {
   color: var(--button-success-color);
   background-color: var(--button-success-color);
   background-image: var(--button-success-gradient);
@@ -17,21 +17,21 @@
   will-change: box-shadow;
 }
 
-.normal:focus {
+.light-normal:focus {
   animation-name: normal-focus;
   animation-duration: var(--button-focus-animation-duration);
   background-color: var(--button-success-focus);
   background-image: none;
 }
 
-.normal:hover {
+.light-normal:hover {
   animation: none;
   background-color: var(--button-success-hover);
   background-image: none;
   border-color: var(--button-success-hover);
 }
 
-.normal:active {
+.light-normal:active {
   animation: none;
   background-color: var(--button-success-active);
   background-image: none;
@@ -53,27 +53,27 @@
   }
 }
 
-.low {
+.light-low {
   color: var(--button-neutral-color);
   background-color: var(--button-neutral-color);
   border-color: var(--button-neutral-color);
   will-change: box-shadow;
 }
 
-.low:focus {
+.light-low:focus {
   animation-name: low-focus;
   animation-duration: var(--button-focus-animation-duration);
   background-color: var(--button-neutral-focus);
   background-image: none;
 }
 
-.low:hover {
+.light-low:hover {
   animation: none;
   background-color: var(--button-neutral-hover);
   border-color: var(--button-neutral-hover);
 }
 
-.low:active {
+.light-low:active {
   animation: none;
   background-color: var(--button-neutral-active);
   background-image: none;
@@ -95,7 +95,7 @@
   }
 }
 
-.high {
+.light-high {
   color: var(--button-danger-color);
   background-color: var(--button-danger-color);
   background-image: var(--button-danger-gradient);
@@ -103,21 +103,21 @@
   will-change: box-shadow;
 }
 
-.high:focus {
+.light-high:focus {
   animation-name: high-focus;
   animation-duration: var(--button-focus-animation-duration);
   background-color: var(--button-danger-focus);
   background-image: none;
 }
 
-.high:hover {
+.light-high:hover {
   animation: none;
   background-color: var(--button-danger-hover);
   background-image: none;
   border-color: var(--button-danger-hover);
 }
 
-.high:active {
+.light-high:active {
   animation: none;
   background-color: var(--button-danger-active);
   background-image: none;

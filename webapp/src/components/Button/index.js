@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-// import { themr } from 'react-css-themr'
+import { themr } from 'react-css-themr'
 
 import defaultTheme from './defaultTheme/index.css'
 
 console.log(defaultTheme)
 
-// const applyThemr = themr('PLButton', defaultTheme)
+const applyThemr = themr('PLButton', defaultTheme)
 
 function Button ({
   base,
@@ -16,10 +16,11 @@ function Button ({
   disabled,
   onClick,
   size,
-  theme,
   type,
   fill,
-}) {
+}, context) {
+  const { theme = defaultTheme } = context
+  console.log(context)
   const buttonClasses = classNames(
     theme.button,
     theme[fill],
@@ -40,7 +41,7 @@ function Button ({
   )
 }
 
-Button.propTypes = {
+Button.contextTypes = {
   theme: PropTypes.shape({
     base: PropTypes.string,
     button: PropTypes.string,
@@ -49,6 +50,9 @@ Button.propTypes = {
     size: PropTypes.string,
     fill: PropTypes.string,
   }),
+}
+
+Button.propTypes = {
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   onClick: PropTypes.func,
   fill: PropTypes.oneOf([
@@ -72,7 +76,6 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
-  theme: defaultTheme,
   fill: 'flat',
   base: 'light',
   relevance: 'normal',
@@ -82,4 +85,4 @@ Button.defaultProps = {
   onClick: null,
 }
 
-export default Button
+export default applyThemr(Button)
