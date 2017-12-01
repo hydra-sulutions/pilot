@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-
 import IconArrowDown from 'react-icons/lib/md/keyboard-arrow-down'
+import { themr } from 'react-css-themr'
 
-import style from './CardSection.style.css'
+const applyTheme = themr('PLCardSection')
 
 class CardSection extends Component {
   constructor (props) {
@@ -21,29 +21,30 @@ class CardSection extends Component {
   }
 
   arrowUpDown () {
-    const { collapsed, onTitleClick } = this.props
+    const { collapsed, onTitleClick, theme } = this.props
 
     if (!onTitleClick) {
       return null
     }
 
-    const arrowClasses = classNames(style.arrow, {
-      [style.rotateArrowUp]: !collapsed,
+    const arrowClasses = classNames(theme.arrow, {
+      [theme.rotateArrowUp]: !collapsed,
     })
 
     return <IconArrowDown className={arrowClasses} />
   }
 
   renderHeader () {
+    const { theme } = this.props
     return (
-      <div className={style.header}>
-        <h2 className={style.cardTitle}>
+      <div className={theme.header}>
+        <h2 className={theme.cardTitle}>
           {this.cardTitle()}
           {this.arrowUpDown()}
         </h2>
 
         {this.props.subTitle &&
-          <p className={style.cardSubTitle}>{this.props.subTitle}</p>
+          <p className={theme.cardSubTitle}>{this.props.subTitle}</p>
         }
       </div>
     )
@@ -54,17 +55,17 @@ class CardSection extends Component {
       onTitleClick,
       collapsed,
       children,
+      theme,
     } = this.props
-
     return (
-      <div className={style.container}>
+      <div className={theme.container}>
         {onTitleClick
           ? (
             <a
               onClick={() => onTitleClick(collapsed)}
               role="button"
               tabIndex="0"
-              className={style.collapseButton}
+              className={theme.collapseButton}
             >
               {this.renderHeader()}
             </a>
@@ -73,7 +74,7 @@ class CardSection extends Component {
           )
         }
         {!collapsed &&
-          <div className={style.sectionContent}>
+          <div className={theme.sectionContent}>
             {children}
           </div>
         }
@@ -89,6 +90,9 @@ CardSection.propTypes = {
   children: PropTypes.node.isRequired,
   onTitleClick: PropTypes.func,
   subTitle: PropTypes.string,
+  theme: PropTypes.shape({
+    base: PropTypes.string,
+  }).isRequired,
 }
 
 CardSection.defaultProps = {
@@ -96,6 +100,7 @@ CardSection.defaultProps = {
   collapsed: false,
   onTitleClick: null,
   subTitle: '',
+  base: 'light',
 }
 
-export default CardSection
+export default applyTheme(CardSection)

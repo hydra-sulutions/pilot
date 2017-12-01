@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { ThemeProvider } from 'react-css-themr'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
@@ -8,17 +8,23 @@ import Icon from 'react-icons/lib/md/insert-invitation'
 import '../../src/styles/index.css'
 import style from './style.css'
 
-import {
+import defaultTheme from '../../src/components/Card/defaultTheme/index.css'
+import highContrastTheme from '../../src/components/Card/highContrastTheme/index.css'
+import defaultCardSectionTheme from '../../src/components/Card/defaultTheme/CardSection.style.css'
+import highContrastCardSectionTheme from '../../src/components/Card/highContrastTheme/CardSection.style.css'
+
+import CardComponents from '../../src/components/Card'
+
+import Button from '../../src/components/Button'
+
+const {
   Card,
   CardTitle,
   CardContent,
   CardGraphic,
   CardActions,
   CardSection,
-} from '../../src/components/Card'
-
-import Button from '../../src/components/Button'
-
+} = CardComponents
 
 const TitleText = () => (
   <div className={style.showcase}>
@@ -192,36 +198,72 @@ class CollapsableSection extends React.Component {
 
 
 storiesOf('Cards', module)
-  .add('All styles', () => (
-    <div>
-      <section>
-        <h2>Title and content</h2>
-        <TitleText />
-      </section>
-      <section>
-        <h2>Title, icon and content</h2>
-        <TitleIcon />
-      </section>
-      <section>
-        <h2>Title, content and actions</h2>
-        <TitleTextActions />
-      </section>
-      <section>
-        <h2>Graphic, title, content and actions</h2>
-        <GraphicTitleTextActions />
-      </section>
-      <section>
-        <h2>Title on event handler</h2>
-        <TitleTextAdvanced />
-      </section>
-      <section>
-        <h2>Card section with collapsible content</h2>
-        <CollapsableSection />
-      </section>
-      <section>
-        <h2>Simple card section</h2>
-        <SimpleSection />
-      </section>
-    </div>
+  .add('default theme', () => (
+    <ThemeProvider theme={{PLCard: defaultTheme, PLCardSection: defaultCardSectionTheme}}>
+      <div>
+        <section>
+          <h2>Title and content</h2>
+          <TitleText />
+        </section>
+        <section>
+          <h2>Title, icon and content</h2>
+          <TitleIcon />
+        </section>
+        <section>
+          <h2>Title, content and actions</h2>
+          <TitleTextActions />
+        </section>
+        <section>
+          <h2>Graphic, title, content and actions</h2>
+          <GraphicTitleTextActions />
+        </section>
+        <section>
+          <h2>Title on event handler</h2>
+          <TitleTextAdvanced />
+        </section>
+        <section>
+          <h2>Card section with collapsible content</h2>
+          <CollapsableSection />
+        </section>
+        <section>
+          <h2>Simple card section</h2>
+          <SimpleSection />
+        </section>
+      </div>
+    </ThemeProvider>
+  ))
+  .add('high contrast theme', () => (
+    <ThemeProvider theme={{PLCard: highContrastTheme, PLCardSection: highContrastCardSectionTheme}}>
+      <div>
+        <section>
+          <h2>Title and content</h2>
+          <TitleText />
+        </section>
+        <section>
+          <h2>Title, icon and content</h2>
+          <TitleIcon />
+        </section>
+        <section>
+          <h2>Title, content and actions</h2>
+          <TitleTextActions />
+        </section>
+        <section>
+          <h2>Graphic, title, content and actions</h2>
+          <GraphicTitleTextActions />
+        </section>
+        <section>
+          <h2>Title on event handler</h2>
+          <TitleTextAdvanced />
+        </section>
+        <section>
+          <h2>Card section with collapsible content</h2>
+          <CollapsableSection />
+        </section>
+        <section>
+          <h2>Simple card section</h2>
+          <SimpleSection />
+        </section>
+      </div>
+    </ThemeProvider>
   ))
 
