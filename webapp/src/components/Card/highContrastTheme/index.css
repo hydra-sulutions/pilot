@@ -1,8 +1,8 @@
-@import "./../../styles/colors.css";
+@import "./../../../styles/colors.css";
 @import "./properties.css";
 
 .card {
-  background: var(--color-white);
+  background: var(--card-background);
   box-shadow: var(--card-shadow);
   margin: 0;
   padding: 0;
@@ -44,12 +44,13 @@
 
 .title,
 .title > h3 {
-  color: var(--color-light-steel-100);
+  color: var(--card-section-title-color);
   margin-right: var(--card-title-icon-margin);
 }
 
 .content {
   padding: var(--card-content-padding);
+  color: var(--card-section-color);
 }
 
 .graphic,
