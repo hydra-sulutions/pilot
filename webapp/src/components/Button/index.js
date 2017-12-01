@@ -3,11 +3,7 @@ import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { themr } from 'react-css-themr'
 
-import defaultTheme from './defaultTheme/index.css'
-
-console.log(defaultTheme)
-
-const applyThemr = themr('PLButton', defaultTheme)
+const applyThemr = themr('PLButton')
 
 function Button ({
   base,
@@ -20,7 +16,6 @@ function Button ({
   type,
   fill,
 }) {
-  console.log(theme)
   const buttonClasses = classNames(
     theme.button,
     theme[fill],
@@ -49,7 +44,7 @@ Button.propTypes = {
     disabled: PropTypes.string,
     size: PropTypes.string,
     fill: PropTypes.string,
-  }),
+  }).isRequired,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   onClick: PropTypes.func,
   fill: PropTypes.oneOf([
@@ -73,7 +68,6 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
-  theme: defaultTheme,
   fill: 'flat',
   base: 'light',
   relevance: 'normal',
