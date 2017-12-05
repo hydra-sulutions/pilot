@@ -1,26 +1,33 @@
 import React from 'react'
-import { bool, func } from 'prop-types'
+import {
+  bool,
+  func,
+  shape,
+  string,
+} from 'prop-types'
+
 import classnames from 'classnames'
+import { themr } from 'react-css-themr'
 
-import style from './style.css'
-
+const applyThemr = themr('PLSwitch')
 
 function Switch ({
   disabled,
   onChange,
   checked,
+  theme,
 }) {
-  const className = classnames(style.switch, {
-    [style.checked]: checked,
-    [style.disabled]: disabled,
-  })
+  const className = classnames(
+    theme.switch,
+    {
+      [theme.checked]: checked,
+      [theme.disabled]: disabled,
+    }
+  )
 
   return (
-    <div
-      className={className}
-    >
+    <div className={className}>
       <input
-        className={style.input}
         checked={checked}
         type="checkbox"
         onChange={() => !disabled && onChange(!checked)}
@@ -33,14 +40,20 @@ function Switch ({
 }
 
 Switch.propTypes = {
+  theme: shape({
+    switch: string,
+    checked: string,
+    disabled: string,
+  }),
   disabled: bool,
   onChange: func.isRequired,
   checked: bool,
 }
 
 Switch.defaultProps = {
+  theme: {},
   disabled: false,
   checked: false,
 }
 
-export default Switch
+export default applyThemr(Switch)
