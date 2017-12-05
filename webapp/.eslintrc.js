@@ -6,18 +6,6 @@ module.exports = {
   },
   rules: {
     "react/jsx-filename-extension": [0],
-    "css-modules/no-unused-class": [
-      2,
-      {
-        camelCase: true
-      }
-    ],
-    "css-modules/no-undef-class": [
-      2,
-      {
-        camelCase: true
-      }
-    ]
   },
   plugins: [
     "css-modules"

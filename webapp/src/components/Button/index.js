@@ -1,28 +1,27 @@
-/* eslint css-modules/no-unused-class: [2, {
-     markAsUsed: [
-       'flat', 'gradient', 'light-flat', 'light-gradient', 'dark-flat',
-       'dark-gradient', 'outline', 'clean', 'block', 'extra-small',
-       'small', 'default', 'large'
-     ]
-   }]
-*/
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import { themr } from 'react-css-themr'
 
-import stylesheet from './style.css'
-
+const applyThemr = themr('PLButton')
 
 function Button ({
-  disabled, onClick, variant, base, color, size, children, type,
+  base,
+  children,
+  relevance,
+  disabled,
+  onClick,
+  size,
+  theme,
+  type,
+  fill,
 }) {
   const buttonClasses = classNames(
-    stylesheet.button,
-    stylesheet[variant],
-    stylesheet[`${base}-${variant}`],
-    stylesheet[`${base}-${color}`],
-    stylesheet[size]
+    theme.button,
+    theme[fill],
+    theme[`${base}-${fill}`],
+    theme[`${base}-${relevance}`],
+    theme[size]
   )
 
   return (
@@ -38,16 +37,24 @@ function Button ({
 }
 
 Button.propTypes = {
+  theme: PropTypes.shape({
+    base: PropTypes.string,
+    button: PropTypes.string,
+    relevance: PropTypes.string,
+    disabled: PropTypes.string,
+    size: PropTypes.string,
+    fill: PropTypes.string,
+  }).isRequired,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   onClick: PropTypes.func,
-  variant: PropTypes.oneOf([
+  fill: PropTypes.oneOf([
     'flat', 'gradient', 'outline', 'clean',
   ]),
   base: PropTypes.oneOf([
     'dark', 'light',
   ]),
-  color: PropTypes.oneOf([
-    'green', 'silver', 'red',
+  relevance: PropTypes.oneOf([
+    'high', 'normal', 'low',
   ]),
   size: PropTypes.oneOf([
     'extra-small', 'small', 'default', 'large',
@@ -61,13 +68,13 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
-  onClick: null,
-  variant: 'flat',
+  fill: 'flat',
   base: 'light',
-  color: 'green',
+  relevance: 'normal',
   size: 'default',
   type: 'button',
   disabled: false,
+  onClick: null,
 }
 
-export default Button
+export default applyThemr(Button)
