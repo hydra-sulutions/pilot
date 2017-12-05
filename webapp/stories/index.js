@@ -17,4 +17,5 @@ import './Filters'
 import './Legend'
 import './DateSelector'
 import './Modal'
+import './Cranio'
 
