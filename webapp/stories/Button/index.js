@@ -15,7 +15,7 @@ import styles from './style.css'
 
 storiesOf('Buttons', module)
   .add('defaultTheme', () => (
-    <ThemeProvider theme={{PLButton: defaultTheme}}>
+    <ThemeProvider theme={{ PLButton: defaultTheme }}>
       <div className={styles.container}>
         <h2>Default Button</h2>
 

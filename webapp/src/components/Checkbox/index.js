@@ -1,40 +1,51 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+import { themr } from 'react-css-themr'
 
-import style from './style.css'
+const applyThemr = themr('PLCheckbox')
 
-const Checkbox = (props) => {
-  const containerClass = classnames(style.container, {
-    [style.disabled]: props.disabled,
+const Checkbox = ({
+  theme,
+  disabled,
+  error,
+  success,
+  name,
+  value,
+  onChange,
+  checked,
+  label,
+}) => {
+  const containerClass = classnames(theme.container, {
+    [theme.disabled]: disabled,
   })
 
-  const secondaryTextClass = classnames(style.secondaryText, {
-    [style.error]: props.error,
-    [style.success]: props.success,
+  const secondaryTextClass = classnames(theme.secondaryText, {
+    [theme.error]: error,
+    [theme.success]: success,
   })
 
   return (
     <div className={containerClass}>
       <input
         type="checkbox"
-        name={props.name}
-        value={props.value}
-        id={`${props.name}-${props.value}`}
-        checked={props.checked}
-        disabled={props.disabled}
-        onChange={e => !props.disabled && props.onChange(e.target.value)}
+        name={name}
+        value={value}
+        id={`${name}-${value}`}
+        checked={checked}
+        disabled={disabled}
+        onChange={e => !disabled && onChange(e.target.value)}
       />
       <label
-        htmlFor={`${props.name}-${props.value}`}
+        htmlFor={`${name}-${value}`}
       >
-        <i className={style.iconCheck} />
-        {props.label}
+        <i className={theme.iconCheck} />
+        {label}
       </label>
 
-      {(props.success || props.error) &&
+      {(success || error) &&
         <p className={secondaryTextClass}>
-          {props.success || props.error}
+          {success || error}
         </p>
       }
     </div>
@@ -42,6 +53,10 @@ const Checkbox = (props) => {
 }
 
 Checkbox.propTypes = {
+  theme: PropTypes.shape({
+    base: PropTypes.string,
+    container: PropTypes.string,
+  }).isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
@@ -58,4 +73,6 @@ Checkbox.defaultProps = {
   success: '',
 }
 
-export default Checkbox
+// export default Checkbox
+
+export default applyThemr(Checkbox)
