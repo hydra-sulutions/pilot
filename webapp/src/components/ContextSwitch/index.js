@@ -3,25 +3,24 @@ import {
   arrayOf,
   string,
   func,
+  shape,
 } from 'prop-types'
-
-import style from './style.css'
 
 const ContextSwitch = ({
   items,
   selected,
   onChange,
   name,
+  theme,
 }) => (
-  <div className={style.root}>
+  <div className={theme.contextSwitch}>
     {items.map((item, index) => (
       <label
         key={`context-switch-${name}-label-${item}`}
-        className={style.item}
+        className={theme.item}
         htmlFor={`context-switch-${name}-input-${item}`}
       >
         <input
-          className={style.itemInput}
           id={`context-switch-${name}-input-${item}`}
           name={`context-switch-${name}-input`}
           value={item}
@@ -30,13 +29,18 @@ const ContextSwitch = ({
           onChange={() => onChange(item, index)}
         />
 
-        <span className={style.itemLabel}>{item}</span>
+        <span className={theme.label}>{item}</span>
       </label>
     ))}
   </div>
 )
 
 ContextSwitch.propTypes = {
+  theme: shape({
+    contextSwitch: string,
+    item: string,
+    label: string,
+  }),
   items: arrayOf(string).isRequired,
   selected: string.isRequired,
   onChange: func.isRequired,

@@ -55,22 +55,23 @@ class Input extends React.Component {
       value,
       className,
       onChange,
+      theme,
     } = this.props
 
     const inputContainer = classnames(style.inputContainer, {
-      [style.boxed]: boxed,
-      [style.multiline]: multiline,
-      [style.error]: error,
-      [style.success]: success,
+      [theme.boxed]: boxed,
+      [theme.multiline]: multiline,
+      [theme.error]: error,
+      [theme.success]: success,
     })
 
     const containerClasses = classnames(style.container, {
-      [style.active]: !disabled && value !== '',
-      [style.disabled]: !boxed && disabled,
+      [theme.active]: !disabled && value !== '',
+      [theme.disabled]: !boxed && disabled,
     })
 
     const contentPresent = classnames({
-      [style.contentPresent]: value !== '',
+      [theme.contentPresent]: value !== '',
     })
 
     const inputProps = pick(
@@ -136,6 +137,19 @@ class Input extends React.Component {
 }
 
 Input.propTypes = {
+  theme: PropTypes.shape({
+    input: PropTypes.string,
+    icon: PropTypes.string,
+    boxContainer: PropTypes.string,
+    inputContainer: PropTypes.string,
+    secondaryText: PropTypes.string,
+    active: PropTypes.string,
+    error: PropTypes.string,
+    boxed: PropTypes.string,
+    multiline: PropTypes.string,
+    expander: PropTypes.string,
+    contentPresent: PropTypes.string,
+  }),
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,

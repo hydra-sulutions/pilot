@@ -1,7 +1,7 @@
-@import "../../styles/typography.css";
-@import "../../styles/colors.css";
-@import "../../styles/spacing.css";
-@import "../../styles/media.css";
+@import "../../theme-pagarme/typography.css";
+@import "../../theme-pagarme/colors.css";
+@import "../../theme-pagarme/spacing.css";
+@import "../../theme-pagarme/media.css";
 
 .heading {
   margin: 0;

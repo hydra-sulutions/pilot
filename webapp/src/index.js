@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import registerServiceWorker from './registerServiceWorker'
 
-import './styles/index.css'
+import './theme-pagarme/index.css'
 
 const App = () =>
   <h1>Hello world</h1>

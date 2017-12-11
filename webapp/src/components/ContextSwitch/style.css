@@ -1,6 +1,6 @@
 @import "./properties.css";
 
-.root {
+.contextSwitch {
   display: inline-flex;
   border-radius: var(--context-switch-border-radius);
   box-shadow: var(--context-switch-box-shadow);
@@ -10,14 +10,14 @@
   position: relative;
 }
 
-.itemInput {
+.item > input {
   position: absolute;
   top: 0;
   left: 0;
   opacity: 0;
 }
 
-.itemLabel {
+.label {
   background-color: var(--context-switch-white);
   padding: var(--context-switch-padding);
   text-transform: uppercase;
@@ -33,15 +33,15 @@
   box-shadow: 0 0 4.8px 0.2px var(--context-switch-label-shadow-color);
 }
 
-.item:first-child .itemLabel {
+.item:first-child .label {
   border-radius: var(--context-switch-border-radius) 0 0 var(--context-switch-border-radius);
 }
 
-.item:last-child .itemLabel {
+.item:last-child .label {
   border-radius: 0 var(--context-switch-border-radius) var(--context-switch-border-radius) 0;
 }
 
-.itemInput:checked + .itemLabel {
+.item > input:checked + .label {
   box-shadow: inset 0 2px 9px 0 rgba(var(--color-black), 0.25);
   background-color: var(--context-switch-checked-label-shadow-color);
   color: var(--context-switch-white);

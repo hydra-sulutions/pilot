@@ -1,7 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
+import classNames from 'classnames'
 import MdArrowDropDown from 'react-icons/lib/md/arrow-drop-down'
+
+import { themr } from 'react-css-themr'
+
 import {
   propEq,
   pipe,
@@ -10,21 +13,25 @@ import {
   defaultTo,
 } from 'ramda'
 
-import style from './style.css'
+const applyThemr = themr('UIDropdown')
 
 class Dropdown extends React.Component {
   constructor (props) {
     super(props)
 
-    this.selectOption = this.selectOption.bind(this)
-    this.findSelectedName = this.findSelectedName.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.selectedName = this.selectedName.bind(this)
   }
 
-  selectOption (value) {
-    this.props.onChange(value)
+  handleChange (event) {
+    const { disabled, onChange } = this.props
+
+    if (!disabled) {
+      onChange(event.target.value)
+    }
   }
 
-  findSelectedName () {
+  selectedName () {
     const {
       options,
       value,
@@ -40,16 +47,10 @@ class Dropdown extends React.Component {
     return selected(options)
   }
 
-  render () {
-    const containerClass = classnames(style.container, {
-      [style.containerDisabled]: this.props.disabled,
-      [style.containerError]: this.props.error,
-      [style.containerSuccess]: this.props.success,
-    })
-
-    const dropdownOptions = this.props.options.map(({ value, name }) => {
-      const optionClasses = classnames(style.option, {
-        [style.isSelected]: this.props.value === value,
+  renderOptions () {
+    return this.props.options.map(({ value, name }) => {
+      const optionClasses = classNames(style.option, {
+        [style.active]: this.props.value === value,
       })
 
       return (
@@ -62,48 +63,64 @@ class Dropdown extends React.Component {
         </option>
       )
     })
+  }
+
+  render () {
+    const {
+      disabled,
+      error,
+      label,
+      name,
+      success,
+      title,
+    }
+
+    const rootClasses = classNames(
+      style.dropdown,
+      {
+        [style.disabled]: disabled,
+        [style.error]: error,
+        [style.success]: success,
+      }
+    )
 
     return (
-      <div className={containerClass}>
+      <div className={rootClasses}>
         <div className={style.buttonGroup}>
           <label
-            htmlFor={this.props.name}
+            htmlFor={name}
             className={style.label}
           >
-            {this.props.label}
+            {label}
           </label>
 
           <MdArrowDropDown
             className={style.arrow}
-            color={this.props.disabled ? '#d4d4d4' : '#000'}
+            color={disabled ? '#d4d4d4' : '#000'}
           />
 
-          <div
-            className={style.input}
-          >
-            {this.findSelectedName() || this.props.title}
+          <div className={style.input}>
+            {this.selectedName() || title}
 
             <select
-              onChange={e => !this.props.disabled && this.selectOption(e.target.value)}
-              disabled={this.props.disabled}
+              onChange={this.handleChange}
+              disabled={disabled}
             >
-              {this.props.title &&
+              {title &&
                 <option
                   disabled
-                  className={classnames(style.option, style.disabledOption)}
+                  className={classNames(style.option, style.title)}
                 >
-                  {this.props.title}
+                  {title}
                 </option>
               }
-              {dropdownOptions}
+              {this.renderOptions()}
             </select>
           </div>
 
-          {(this.props.success || this.props.error) &&
-            <p
-              className={style.secondaryText}
-            >
-              {this.props.success || this.props.error}
+          {(success || error) &&
+            <p className={style.secondaryText}>
+              {success || error}
             </p>
           }
         </div>
@@ -113,6 +130,18 @@ class Dropdown extends React.Component {
 }
 
 Dropdown.propTypes = {
+  theme: PropTypes.shape({
+    arrow: PropTypes.string,
+    buttonGroup: PropTypes.string,
+    disabled: PropTypes.string,
+    dropdown: PropTypes.string,
+    error: PropTypes.string,
+    input: PropTypes.string,
+    label: PropTypes.string,
+    secondaryText: PropTypes.string,
+    success: PropTypes.string,
+    title: PropTypes.string,
+  }),
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   options: PropTypes.arrayOf(
@@ -130,6 +159,7 @@ Dropdown.propTypes = {
 }
 
 Dropdown.defaultProps = {
+  theme: {},
   value: '',
   disabled: false,
   title: '',
@@ -137,4 +167,4 @@ Dropdown.defaultProps = {
   success: '',
 }
 
-export default Dropdown
+export default applyThemr(Dropdown)
