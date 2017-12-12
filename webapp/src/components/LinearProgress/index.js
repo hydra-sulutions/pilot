@@ -1,46 +1,45 @@
 import React from 'react'
-import {
-  number,
-  bool,
-} from 'prop-types'
+import { themr } from 'react-css-themr'
+import PropTypes from 'prop-types'
 import {
   Motion,
   spring,
 } from 'react-motion'
 import classnames from 'classnames'
 
-import style from './style.css'
+const applyThemr = themr('PLLinearProgress')
 
 const Linear = ({
+  theme,
   percent,
   disabled,
 }) => {
   const classNameFill = classnames(
-    style.fill,
+    theme.fill,
     {
-      [style.fillEnabled]: !disabled,
-      [style.fillDisabled]: disabled,
+      [theme.fillEnabled]: !disabled,
+      [theme.fillDisabled]: disabled,
     }
   )
 
   const classNameBack = classnames(
-    style.back,
+    theme.back,
     {
-      [style.backEnabled]: !disabled,
-      [style.backDisabled]: disabled,
+      [theme.backEnabled]: !disabled,
+      [theme.backDisabled]: disabled,
     }
   )
 
   const classNameNumber = classnames(
-    style.number,
+    theme.number,
     {
-      [style.numberEnabled]: !disabled,
-      [style.numberDisabled]: disabled,
+      [theme.numberEnabled]: !disabled,
+      [theme.numberDisabled]: disabled,
     }
   )
 
   return (
-    <div className={style.linear}>
+    <div className={theme.linear}>
       <Motion
         defaultStyle={{
           x: 0,
@@ -72,7 +71,7 @@ const Linear = ({
                   style={{
                     marginRight: (x > 94) ? '0' : '-1em',
                   }}
-                  className={style.innerNumber}
+                  className={theme.innerNumber}
                 >
                   {percentage}
                 </div>
@@ -86,13 +85,25 @@ const Linear = ({
 }
 
 Linear.propTypes = {
-  percent: number.isRequired,
-  disabled: bool,
+  theme: PropTypes.shape({
+    fill: PropTypes.string,
+    fillEnabled: PropTypes.bool,
+    fillDisabled: PropTypes.bool,
+    back: PropTypes.string,
+    backEnabled: PropTypes.bool,
+    backDisabled: PropTypes.bool,
+    number: PropTypes.string,
+    numberEnabled: PropTypes.bool,
+    numberDisabled: PropTypes.bool,
+    linear: PropTypes.string,
+    innerNumber: PropTypes.string,
+  }).isRequired,
+  percent: PropTypes.number.isRequired,
+  disabled: PropTypes.bool,
 }
 
 Linear.defaultProps = {
   disabled: false,
 }
 
-export default Linear
-
+export default applyThemr(Linear)
