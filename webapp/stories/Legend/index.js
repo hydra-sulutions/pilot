@@ -1,7 +1,11 @@
 import React from 'react'
+import { ThemeProvider } from 'react-css-themr'
 import { storiesOf } from '@storybook/react'
 
 import Legend from '../../src/components/Legend'
+
+import defaultTheme from '../../src/components/Legend/defaultTheme/style.css'
+import highContrastTheme from '../../src/components/Legend/highContrastTheme/style.css'
 
 const hidingLabel = [
   {
@@ -74,25 +78,54 @@ const createLegends = (title, status) => (
 
     {status.map(({ color, text, outline, acronym, hideLabel }) => (
       <div key={text} style={{ margin: '10px' }}>
-        <Legend
-          color={color}
-          outline={outline}
-          acronym={acronym}
-          hideLabel={hideLabel}
-        >
-          {text}
-        </Legend>
+        <ThemeProvider theme={{ PLLegend: defaultTheme }}>
+          <Legend
+            color={color}
+            outline={outline}
+            acronym={acronym}
+            hideLabel={hideLabel}
+          >
+            {text}
+          </Legend>
+        </ThemeProvider>
       </div>
     ))}
   </div>
 )
 
+const createLegendsWithHightContrast = (title, status) => (
+  <div>
+    {title}
+
+    {status.map(({ color, text, outline, acronym, hideLabel }) => (
+      <div key={text} style={{ margin: '10px' }}>
+        <ThemeProvider theme={{ PLLegend: highContrastTheme }}>
+          <Legend
+            color={color}
+            outline={outline}
+            acronym={acronym}
+            hideLabel={hideLabel}
+          >
+            {text}
+          </Legend>
+        </ThemeProvider>
+      </div>
+    ))}
+  </div>
+)
 
 storiesOf('Legend', module)
-  .add('all', () => (
+  .add('defaultTheme', () => (
     <div>
       {createLegends('Without acronym prop', automaticAbbr)}
       {createLegends('With acronym prop', manualAbbr)}
       {createLegends('With hideLabel prop', hidingLabel)}
+    </div>
+  ))
+  .add('highContrastTheme', () => (
+    <div>
+      {createLegendsWithHightContrast('Without acronym prop', automaticAbbr)}
+      {createLegendsWithHightContrast('With acronym prop', manualAbbr)}
+      {createLegendsWithHightContrast('With hideLabel prop', hidingLabel)}
     </div>
   ))
