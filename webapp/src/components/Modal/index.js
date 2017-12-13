@@ -1,11 +1,13 @@
 import React from 'react'
-import { node, bool, string, func, element } from 'prop-types'
+import PropTypes from 'prop-types'
+import { themr } from 'react-css-themr'
 
 import ReactModal from 'react-modal'
 
-import style from './style.css'
+const applyThemr = themr('PLModal')
 
 const Modal = ({
+  theme,
   children,
   isOpen,
   onRequestClose,
@@ -14,11 +16,11 @@ const Modal = ({
     isOpen={isOpen}
     role="dialog"
     parentSelector={() => document.body}
-    overlayClassName={style.overlay}
-    className={style.modal}
+    overlayClassName={theme.overlay}
+    className={theme.modal}
     onRequestClose={onRequestClose}
   >
-    <div className={style.modalFrame}>
+    <div className={theme.modalFrame}>
       {children}
     </div>
   </ReactModal>
@@ -26,50 +28,66 @@ const Modal = ({
 
 
 Modal.propTypes = {
-  children: node.isRequired,
-  isOpen: bool.isRequired,
-  onRequestClose: func,
+  theme: PropTypes.shape({
+    overlay: PropTypes.string,
+    modal: PropTypes.string,
+    modalFrame: PropTypes.string,
+  }).isRequired,
+  children: PropTypes.node.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  onRequestClose: PropTypes.func,
 }
 
 Modal.defaultProps = {
   onRequestClose: null,
 }
 
-const ModalTitle = ({ title, icon }) => (
-  <div className={style.modalTitle}>
-    <div className={style.titleIcon}>{icon}</div>
-    <h2 className={style.titleElement}>{title}</h2>
+const ModalTitle = ({ theme, title, icon }) => (
+  <div className={theme.modalTitle}>
+    <div className={theme.titleIcon}>{icon}</div>
+    <h2 className={theme.titleElement}>{title}</h2>
   </div>
 )
 
 ModalTitle.propTypes = {
-  title: string.isRequired,
-  icon: element,
+  theme: PropTypes.shape({
+    modalTitle: PropTypes.string,
+    titleIcon: PropTypes.string,
+    titleElement: PropTypes.titleElement,
+  }).isRequired,
+  title: PropTypes.string.isRequired,
+  icon: PropTypes.element,
 }
 
 ModalTitle.defaultProps = {
   icon: null,
 }
 
-const ModalActions = ({ children }) => (
-  <div className={style.modalActions}>{children}</div>
+const ModalActions = ({ theme, children }) => (
+  <div className={theme.modalActions}>{children}</div>
 )
 
 ModalActions.propTypes = {
-  children: node.isRequired,
+  theme: PropTypes.shape({
+    modalActions: PropTypes.string,
+  }).isRequired,
+  children: PropTypes.node.isRequired,
 }
 
-const ModalContent = ({ children }) => (
-  <div className={style.modalContent}>{children}</div>
+const ModalContent = ({ theme, children }) => (
+  <div className={theme.modalContent}>{children}</div>
 )
 
 ModalContent.propTypes = {
-  children: node.isRequired,
+  theme: PropTypes.shape({
+    modalContent: PropTypes.string,
+  }).isRequired,
+  children: PropTypes.node.isRequired,
 }
 
-export {
-  Modal,
-  ModalTitle,
-  ModalActions,
-  ModalContent,
+export default {
+  Modal: applyThemr(Modal),
+  ModalTitle: applyThemr(ModalTitle),
+  ModalActions: applyThemr(ModalActions),
+  ModalContent: applyThemr(ModalContent),
 }
