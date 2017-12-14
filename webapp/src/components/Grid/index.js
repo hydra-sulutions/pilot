@@ -1,66 +1,63 @@
 import React from 'react'
-
-import {
-  bool,
-  node,
-  number,
-  string,
-} from 'prop-types'
-
+import PropTypes from 'prop-types'
 import classNames from 'classnames'
+import { themr } from 'react-css-themr'
 
-import style from './style.css'
+const applyThemr = themr('UIGrid')
 
-const colClassNames = ({ className, desk, tv, tablet, palm, alignEnd }) =>
+const colClassNames = ({ theme, className, desk, tv, tablet, palm, alignEnd }) =>
   classNames(
     className,
-    style.col,
-    style[`col-desk-${desk}`],
-    style[`col-tv-${tv}`],
-    style[`col-tablet-${tablet}`],
-    style[`col-palm-${palm}`],
+    theme.col,
+    theme[`col-desk-${desk}`],
+    theme[`col-tv-${tv}`],
+    theme[`col-tablet-${tablet}`],
+    theme[`col-palm-${palm}`],
     {
-      [style.alignEnd]: alignEnd,
+      [theme.alignEnd]: alignEnd,
     }
   )
 
-const rowClassNames = ({ flex, stretch, className }) =>
+const rowClassNames = ({ theme, flex, stretch, className }) =>
   classNames(
     className,
-    style.row,
+    theme.row,
     {
-      [style.flex]: flex,
-      [style.stretch]: stretch,
+      [theme.flex]: flex,
+      [theme.stretch]: stretch,
     }
   )
 
-const gridClassNames = ({ className }) =>
+const gridClassNames = ({ theme, className }) =>
   classNames(
-    style.grid,
+    theme.grid,
     className
   )
 
-export const Grid = ({ children, className }) => (
-  <div className={gridClassNames({ className })}>
+const Grid = ({ theme, children, className }) => (
+  <div className={gridClassNames({ theme, className })}>
     {children}
   </div>
 )
 
-export const Row = ({ children, flex, stretch, className }) => (
-  <div className={rowClassNames({ flex, stretch, className })}>
+const Row = ({ theme, children, flex, stretch, className }) => (
+  <div className={rowClassNames({ theme, flex, stretch, className })}>
     {children}
   </div>
 )
 
-export const Col = ({ children, desk, tv, tablet, palm, alignEnd, className }) => (
-  <div className={colClassNames({ desk, tv, tablet, palm, alignEnd, className })}>
+const Col = ({ theme, children, desk, tv, tablet, palm, alignEnd, className }) => (
+  <div className={colClassNames({ theme, desk, tv, tablet, palm, alignEnd, className })}>
     {children}
   </div>
 )
 
 Grid.propTypes = {
-  children: node,
-  className: string,
+  theme: PropTypes.shape({
+    grid: PropTypes.string,
+  }).isRequired,
+  children: PropTypes.node,
+  className: PropTypes.string,
 }
 
 Grid.defaultProps = {
@@ -69,10 +66,15 @@ Grid.defaultProps = {
 }
 
 Row.propTypes = {
-  children: node,
-  flex: bool,
-  stretch: bool,
-  className: string,
+  theme: PropTypes.shape({
+    row: PropTypes.string,
+    flex: PropTypes.string,
+    stretch: PropTypes.string,
+  }).isRequired,
+  children: PropTypes.node,
+  flex: PropTypes.bool,
+  stretch: PropTypes.bool,
+  className: PropTypes.string,
 }
 
 Row.defaultProps = {
@@ -83,13 +85,21 @@ Row.defaultProps = {
 }
 
 Col.propTypes = {
-  children: node,
-  desk: number,
-  tv: number,
-  tablet: number,
-  palm: number,
-  alignEnd: bool,
-  className: string,
+  theme: PropTypes.shape({
+    col: PropTypes.string,
+    desk: PropTypes.string,
+    tv: PropTypes.string,
+    tablet: PropTypes.string,
+    palm: PropTypes.string,
+    alignEnd: PropTypes.string,
+  }).isRequired,
+  children: PropTypes.node,
+  desk: PropTypes.number,
+  tv: PropTypes.number,
+  tablet: PropTypes.number,
+  palm: PropTypes.number,
+  alignEnd: PropTypes.bool,
+  className: PropTypes.string,
 }
 
 Col.defaultProps = {
@@ -100,4 +110,10 @@ Col.defaultProps = {
   palm: null,
   alignEnd: false,
   className: null,
+}
+
+export default {
+  Grid: applyThemr(Grid),
+  Row: applyThemr(Row),
+  Col: applyThemr(Col),
 }
