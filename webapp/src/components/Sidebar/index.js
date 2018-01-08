@@ -8,7 +8,6 @@ import cx from 'classnames'
 import PerfectScrollBar from 'react-perfect-scrollbar'
 import MdEventNote from 'react-icons/lib/md/event-note'
 import MdFreeBreakfast from 'react-icons/lib/md/free-breakfast'
-
 import SegmentedSwitch from '../SegmentedSwitch'
 
 const applyThrmr = themr('UISidebar')
@@ -53,50 +52,52 @@ class Sidebar extends React.Component {
 
         <nav>
           <PerfectScrollBar className={theme.items}>
-            <li className={theme.item}>
-              <a className={theme.link}><MdEventNote size={18} /> Ola que tal</a>
-            </li>
-            <li className={cx(theme.item, theme.itemSelected)}>
-              <a className={theme.link}><MdEventNote size={18} /> Hello friend</a>
-            </li>
-            <li className={theme.item}>
-              <a className={theme.link}>Hi</a>
-            </li>
-            <li className={theme.item}>
-              <a className={theme.link}>Hi</a>
-            </li>
-            <li className={cx(theme.item, theme.itemSelected)}>
-              <p className={theme.text}>Hihihi ICONE-SETA-AQUI</p>
-              <ul className={theme.options}>
-                <li className={theme.option}><a className={theme.link}>Hihihihihihihihihihiuhjiujhj</a></li>
-                <li className={theme.option}><a className={theme.link}>Hi my friend</a></li>
-              </ul>
-            </li>
-            <li className={theme.item}>
-              <a className={theme.link}>Hi</a>
-            </li>
-            <li className={theme.item}>
-              <a className={theme.link}>Hi</a>
-            </li><li className={theme.item}>
-              <a className={theme.link}>Hi</a>
-            </li><li className={theme.item}>
-              <a className={theme.link}>Hi</a>
-            </li><li className={theme.item}>
-              <a className={theme.link}>Hi</a>
-            </li><li className={theme.item}>
-              <a className={theme.link}>Hi</a>
-            </li><li className={theme.item}>
-              <a className={theme.link}>Hi</a>
-            </li><li className={theme.item}>
-              <a className={theme.link}>Hi</a>
-            </li>
-            <li className={theme.item}>
-              <a className={theme.link}>Hi</a>
-            </li><li className={theme.item}>
-              <a className={theme.link}>Hi</a>
-            </li><li className={theme.item}>
-              <a className={theme.link}>Hi</a>
-            </li>
+            <ul>
+              <li className={theme.item}>
+                <a className={theme.link}><MdEventNote size={18} /> Ola que tal</a>
+              </li>
+              <li className={cx(theme.item, theme.itemSelected)}>
+                <a className={theme.link}><MdEventNote size={18} /> Hello friend</a>
+              </li>
+              <li className={theme.item}>
+                <a className={theme.link}>Hi</a>
+              </li>
+              <li className={theme.item}>
+                <a className={theme.link}>Hi</a>
+              </li>
+              <li className={cx(theme.item, theme.itemSelected)}>
+                <p className={theme.text}>Hihihi ICONE-SETA-AQUI</p>
+                <ul className={theme.options}>
+                  <li className={theme.option}><a className={theme.link}>Hihihihihihihihihihiuhjiujhj</a></li>
+                  <li className={theme.option}><a className={theme.link}>Hi my friend</a></li>
+                </ul>
+              </li>
+              <li className={theme.item}>
+                <a className={theme.link}>Hi</a>
+              </li>
+              <li className={theme.item}>
+                <a className={theme.link}>Hi</a>
+                </li><li className={theme.item}>
+                <a className={theme.link}>Hi</a>
+                </li><li className={theme.item}>
+                <a className={theme.link}>Hi</a>
+                </li><li className={theme.item}>
+                <a className={theme.link}>Hi</a>
+                </li><li className={theme.item}>
+                <a className={theme.link}>Hi</a>
+                </li><li className={theme.item}>
+                <a className={theme.link}>Hi</a>
+                </li><li className={theme.item}>
+                <a className={theme.link}>Hi</a>
+              </li>
+              <li className={theme.item}>
+                <a className={theme.link}>Hi</a>
+                </li><li className={theme.item}>
+                <a className={theme.link}>Hi</a>
+                </li><li className={theme.item}>
+                <a className={theme.link}>Hi</a>
+              </li>
+            </ul>
           </PerfectScrollBar>
         </nav>
       </div>
