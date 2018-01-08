@@ -17,26 +17,38 @@ class Sidebar extends React.Component {
   }
 
   render () {
+    const {
+      theme,
+      logo,
+      title,
+    } = this.props
+
     return (
-      <div>
-        <div>
-        </div>
+      <div className={theme.sidebar}>
+        <header className={theme.header}>
+          <img src={logo} alt={title} />
+          <button className={theme.menu}>
+            <MdMenu />
+          </button>
+        </header>
 
         <div>
+          <p>switch</p>
+          <p>empresa</p>
         </div>
 
-        <nav>
+        <nav className={theme.items}>
           <ul>
-            <li><a>Ola que tal</a></li>
-            <li><a>Hello friend</a></li>
+            <li className={theme.item}><a className={theme.link}>Ola que tal</a></li>
+            <li className={theme.item}><a className={theme.link}>Hello friend</a></li>
             <li>
-              <p>Hihihi</p>
-              <ul>
-                <li><a>Hihihihihihihihihihiuhjiujhj</a></li>
-                  <li><a>Hi my friend</a></li>
+              <p className={theme.text}>Hihihi</p>
+              <ul className={theme.options}>
+                <li className={theme.option}><a className={theme.link}>Hihihihihihihihihihiuhjiujhj</a></li>
+                <li className={theme.option}><a className={theme.link}>Hi my friend</a></li>
               </ul>
             </li>
-            <li><a>Hi</a></li>
+            <li className={theme.item}><a className={theme.link}>Hi</a></li>
           </ul>
         </nav>
       </div>

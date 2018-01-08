@@ -1,0 +1,51 @@
+@import '../colors.css';
+
+.sidebar {
+  top: 0;
+  left: 0;
+  position: fixed;
+  height: 100vh;
+  display: block;
+  background-color: var(--color-light-carbon-40)
+}
+
+.header {
+  height: 50px;
+  display: flex;
+  padding-left: 15px;
+  padding-right: 15px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu {
+  color: var(--color-white);
+  border: none;
+  background: none;
+
+  svg {
+    width: 17px;
+    height: 12px;
+  }
+}
+
+.items {
+
+}
+
+.link,
+.text {
+
+}
+
+.text {
+
+}
+
+.options {
+
+}
+
+.option {
+
+}
