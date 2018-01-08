@@ -1,0 +1,8 @@
+@import "../colors.css";
+@import "../typography.css";
+
+:root {
+  --table-border: none;
+  --table-font-family: var(--body-font-family);
+  --table-backgound-color: var(--color-white);
+}

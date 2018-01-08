@@ -1,0 +1,7 @@
+@import "./properties.css";
+
+.table {
+  border: var(--table-border);
+  font-family: var(--table-font-family);
+  background-color: var(--table-backgound-color);
+}
