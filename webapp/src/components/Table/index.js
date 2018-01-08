@@ -6,8 +6,7 @@ const applyThemr = themr('UITable')
 
 const Table = () => (
   <table>
-    <tr>
-    </tr>
+    <tr />
   </table>
 )
 
