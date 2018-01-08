@@ -44,7 +44,9 @@
 }
 
 .items {
-
+  overflow: hidden;
+  position: relative;
+  height: calc(100vh - 115px);
 }
 
 .items ul {
@@ -52,11 +54,20 @@
 }
 
 .item {
+  font-size: 16px;
   list-style: none;
   padding: 27px 15px;
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+.item svg {
+  margin-right: 15px;
 }
 
 .itemSelected {
+  color: var(--color-light-greenish-100);
+  background-color: var(--color-light-carbon-100);
   border: 1px solid transparent;
   border-top-color: var(--color-light-steel-200);
   border-bottom-color: var(--color-light-steel-200);
@@ -64,7 +75,7 @@
 
 .link,
 .text {
-
+  color: inherit;
 }
 
 .link:hover {

@@ -5,6 +5,7 @@ import { themr } from 'react-css-themr'
 import shortid from 'shortid'
 import MdMenu from 'react-icons/lib/md/menu'
 import cx from 'classnames'
+import PerfectScrollBar from 'react-perfect-scrollbar'
 import MdEventNote from 'react-icons/lib/md/event-note'
 import MdFreeBreakfast from 'react-icons/lib/md/free-breakfast'
 
@@ -50,13 +51,13 @@ class Sidebar extends React.Component {
           </div>
         </div>
 
-        <nav className={theme.items}>
-          <ul>
+        <nav>
+          <PerfectScrollBar className={theme.items}>
             <li className={theme.item}>
-              <a className={theme.link}><MdEventNote /> Ola que tal</a>
+              <a className={theme.link}><MdEventNote size={18} /> Ola que tal</a>
             </li>
             <li className={cx(theme.item, theme.itemSelected)}>
-              <a className={theme.link}>Hello friend</a>
+              <a className={theme.link}><MdEventNote size={18} /> Hello friend</a>
             </li>
             <li className={theme.item}>
               <a className={theme.link}>Hi</a>
@@ -74,7 +75,29 @@ class Sidebar extends React.Component {
             <li className={theme.item}>
               <a className={theme.link}>Hi</a>
             </li>
-          </ul>
+            <li className={theme.item}>
+              <a className={theme.link}>Hi</a>
+            </li><li className={theme.item}>
+              <a className={theme.link}>Hi</a>
+            </li><li className={theme.item}>
+              <a className={theme.link}>Hi</a>
+            </li><li className={theme.item}>
+              <a className={theme.link}>Hi</a>
+            </li><li className={theme.item}>
+              <a className={theme.link}>Hi</a>
+            </li><li className={theme.item}>
+              <a className={theme.link}>Hi</a>
+            </li><li className={theme.item}>
+              <a className={theme.link}>Hi</a>
+            </li>
+            <li className={theme.item}>
+              <a className={theme.link}>Hi</a>
+            </li><li className={theme.item}>
+              <a className={theme.link}>Hi</a>
+            </li><li className={theme.item}>
+              <a className={theme.link}>Hi</a>
+            </li>
+          </PerfectScrollBar>
         </nav>
       </div>
     )
