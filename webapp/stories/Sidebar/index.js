@@ -26,16 +26,40 @@ const items = [
   },
 ]
 
-storiesOf('Sidebar', module)
-  .add('defaultTheme', () => (
-    <div>
+class SidebarState extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      selectedEnvironment: 'live',
+    }
+
+    this.handleEnvironment = this.handleEnvironment.bind(this)
+  }
+
+  handleEnvironment (env) {
+    this.setState({
+      selectedEnvironment: env,
+    })
+  }
+
+  render () {
+    return (
       <Sidebar
         logo="https://assets.pagar.me/site/general/logo-light-3812e7ea6b596bdcc8c041f0edc4ff15.png"
         title="Pagar.me"
-        collapsed
         items={items}
         selected="transacoes.estornadas"
-        onClick={() => {}}
+        onSwitchChange={this.handleEnvironment}
+        selectedEnvironment={this.state.selectedEnvironment}
       />
+    )
+  }
+}
+
+storiesOf('Sidebar', module)
+  .add('defaultTheme', () => (
+    <div>
+      <SidebarState />
     </div>
   ))

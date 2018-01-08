@@ -21,6 +21,8 @@ class Sidebar extends React.Component {
       theme,
       logo,
       title,
+      selectedEnvironment,
+      onSwitchChange,
     } = this.props
 
     return (
@@ -33,8 +35,16 @@ class Sidebar extends React.Component {
         </header>
 
         <div>
-          <p>switch</p>
-          <p>empresa</p>
+          <div>
+            <SegmentedSwitch
+              items={['live', 'test']}
+              selected={selectedEnvironment}
+              name={`{this.id}-live-test`}
+              onChange={onSwitchChange}
+            />
+          </div>
+          <div>
+          </div>
         </div>
 
         <nav className={theme.items}>
@@ -70,12 +80,8 @@ Sidebar.propTypes = {
       title: PropTypes.string.isRequired,
     })),
   })).isRequired,
-  collapsed: PropTypes.bool,
-  onClick: PropTypes.func.isRequired
-}
-
-Sidebar.defaultProps = {
-  collapsed: false,
+  onSwitchChange: PropTypes.func.isRequired,
+  selectedEnvironment: PropTypes.string.isRequired,
 }
 
 export default applyThrmr(Sidebar)
