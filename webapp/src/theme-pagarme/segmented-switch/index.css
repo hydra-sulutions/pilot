@@ -1,11 +1,12 @@
 @import "./properties.css";
 
 .segmentedSwitch {
-  padding: 1px;
+  padding: var(--context-switch-padding);
   display: inline-flex;
   border-radius: var(--context-switch-border-radius);
   user-select: none;
   background-color: var(--context-switch-label-backgound-color);
+  box-shadow: var(--context-switch-box-shadow);
 }
 
 .item {
@@ -21,7 +22,7 @@
 
 .label {
   background-color: var(--context-switch-label-backgound-color);
-  padding: var(--context-switch-padding);
+  padding: var(--context-switch-label-padding);
   text-transform: var(--context-switch-text-transform);
   font-weight: bold;
   letter-spacing: var(--context-switch-letter-spacing);
