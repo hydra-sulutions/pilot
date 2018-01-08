@@ -1,10 +1,11 @@
 @import "./properties.css";
 
 .segmentedSwitch {
+  padding: 1px;
   display: inline-flex;
   border-radius: var(--context-switch-border-radius);
-  box-shadow: var(--context-switch-box-shadow);
   user-select: none;
+  background-color: var(--context-switch-label-backgound-color);
 }
 
 .item {
@@ -31,20 +32,11 @@
   display: block;
   z-index: 0;
   position: relative;
-  box-shadow: var(--context-switch-label-shadow);
-}
-
-.item:first-child .label {
-  border-radius: var(--context-switch-first-child-border-radius);
-}
-
-.item:last-child .label {
-  border-radius: var(--context-switch-last-child-border-radius);
 }
 
 .item input:checked + .label {
-  box-shadow: var(--context-switch-checked-label-box-shadow);
-  background-color: var(--context-switch-checked-label-shadow-color);
+  border-radius: var(--context-switch-label-border-radius);
+  background-color: var(--context-switch-checked-background-color);
   color: var(--context-switch-checked-label-color);
   z-index: 1;
 }
