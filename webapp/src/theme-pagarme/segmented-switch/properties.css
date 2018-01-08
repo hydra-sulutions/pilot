@@ -4,7 +4,7 @@
 :root {
   --context-switch-padding: 1.4px 2px;
   --context-switch-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.55);
-  --context-switch-label-font-size: 10.7px;
+  --context-switch-label-font-size: 10px;
   --context-switch-checked-background-color: var(--color-light-greenish-100);
   --context-switch-label-color: var(--color-light-steel-100);
   --context-switch-font-family: var(--title-font-family);
