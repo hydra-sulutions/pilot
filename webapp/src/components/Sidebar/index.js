@@ -26,9 +26,9 @@ class Sidebar extends React.Component {
     return (
       <div className={theme.sidebar}>
         <header className={theme.header}>
-          <img src={logo} alt={title} />
+          <img src={logo} alt={title} width={101} />
           <button className={theme.menu}>
-            <MdMenu />
+            <MdMenu size={25} />
           </button>
         </header>
 
