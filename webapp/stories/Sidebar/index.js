@@ -1,5 +1,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
+import MdEventNote from 'react-icons/lib/md/event-note'
+import MdFreeBreakfast from 'react-icons/lib/md/free-breakfast'
 
 import Sidebar from '../../src/components/Sidebar'
 
@@ -7,12 +9,12 @@ const items = [
   {
     value: 'minha-conta',
     title: 'Minha conta',
-    icon: 'account',
+    icon: MdEventNote,
   },
   {
     value: 'transacoes',
     title: 'Transações',
-    icon: 'trade',
+    icon: MdFreeBreakfast,
     options: [
       {
         value: 'estornadas',

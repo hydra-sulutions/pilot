@@ -47,9 +47,28 @@
 
 }
 
+.items ul {
+  padding: 0;
+}
+
+.item {
+  list-style: none;
+  padding: 27px 15px;
+}
+
+.itemSelected {
+  border: 1px solid transparent;
+  border-top-color: var(--color-light-steel-200);
+  border-bottom-color: var(--color-light-steel-200);
+}
+
 .link,
 .text {
 
+}
+
+.link:hover {
+  text-decoration: none;
 }
 
 .text {

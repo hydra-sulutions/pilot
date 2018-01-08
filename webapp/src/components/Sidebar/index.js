@@ -4,6 +4,9 @@ import PropTypes from 'prop-types'
 import { themr } from 'react-css-themr'
 import shortid from 'shortid'
 import MdMenu from 'react-icons/lib/md/menu'
+import cx from 'classnames'
+import MdEventNote from 'react-icons/lib/md/event-note'
+import MdFreeBreakfast from 'react-icons/lib/md/free-breakfast'
 
 import SegmentedSwitch from '../SegmentedSwitch'
 
@@ -49,16 +52,28 @@ class Sidebar extends React.Component {
 
         <nav className={theme.items}>
           <ul>
-            <li className={theme.item}><a className={theme.link}>Ola que tal</a></li>
-            <li className={theme.item}><a className={theme.link}>Hello friend</a></li>
-            <li>
-              <p className={theme.text}>Hihihi</p>
+            <li className={theme.item}>
+              <a className={theme.link}><MdEventNote /> Ola que tal</a>
+            </li>
+            <li className={cx(theme.item, theme.itemSelected)}>
+              <a className={theme.link}>Hello friend</a>
+            </li>
+            <li className={theme.item}>
+              <a className={theme.link}>Hi</a>
+            </li>
+            <li className={theme.item}>
+              <a className={theme.link}>Hi</a>
+            </li>
+            <li className={cx(theme.item, theme.itemSelected)}>
+              <p className={theme.text}>Hihihi ICONE-SETA-AQUI</p>
               <ul className={theme.options}>
                 <li className={theme.option}><a className={theme.link}>Hihihihihihihihihihiuhjiujhj</a></li>
                 <li className={theme.option}><a className={theme.link}>Hi my friend</a></li>
               </ul>
             </li>
-            <li className={theme.item}><a className={theme.link}>Hi</a></li>
+            <li className={theme.item}>
+              <a className={theme.link}>Hi</a>
+            </li>
           </ul>
         </nav>
       </div>
