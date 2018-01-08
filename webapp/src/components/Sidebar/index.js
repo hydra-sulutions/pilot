@@ -35,7 +35,7 @@ class Sidebar extends React.Component {
         </header>
 
         <div>
-          <div>
+          <div className={theme.switchContainer}>
             <SegmentedSwitch
               items={['live', 'test']}
               selected={selectedEnvironment}
