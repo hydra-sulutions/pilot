@@ -51,19 +51,26 @@ class Sidebar extends React.Component {
   }
 
   renderInfos () {
-    const { infos } = this.props
+    const {
+      infos,
+      theme,
+    } = this.props
 
     return (
-      <div
-        onClick={this.handleInfosClick}
-        role="button"
-        tabIndex="0"
-      >
-        <p>{infos.title}</p>
-        {!this.state.showInfos
-          ? <p>{infos.showMsg}</p>
-          : <p>{infos.hideMsg}</p>
-        }
+      <div className={theme.info}>
+        <p className={theme.title}>{infos.title}</p>
+        <div
+          className={theme.toggle}
+          onClick={this.handleInfosClick}
+          role="button"
+          tabIndex="0"
+        >
+          {
+            this.state.showInfos
+              ? <p>{ infos.hideMsg } <IconArrowUp /></p>
+              : <p>{ infos.showMsg } <IconArrowDown /></p>
+          }
+        </div>
 
         {this.state.showInfos &&
           <div>

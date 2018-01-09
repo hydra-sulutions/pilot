@@ -145,3 +145,28 @@
 
   text-align: center;
 }
+
+.info {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.title {
+  margin: 0;
+  font-size: 18px;
+  line-height: 3.17;
+  color: var(--color-white);
+}
+
+.toggle {
+  font-size: 18px;
+  text-transform: lowercase;
+  color: var(--color-light-greenish-100);
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+
+  & p {
+    margin: 0;
+  }
+}
