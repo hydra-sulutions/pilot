@@ -9,6 +9,7 @@ import IconArrowUp from 'react-icons/lib/md/keyboard-arrow-up'
 import IconArrowDown from 'react-icons/lib/md/keyboard-arrow-down'
 import SegmentedSwitch from '../SegmentedSwitch'
 import Tag from '../Tag'
+import Button from '../Button'
 
 const applyThrmr = themr('UISidebar')
 
@@ -19,6 +20,7 @@ class Sidebar extends React.Component {
     this.state = {
       selected: '',
       collapsed: false,
+      showInfos: false,
     }
 
     this.id = shortid.generate()
@@ -26,6 +28,8 @@ class Sidebar extends React.Component {
     this.renderList = this.renderList.bind(this)
     this.handleCollapsed = this.handleCollapsed.bind(this)
     this.handleSelection = this.handleSelection.bind(this)
+    this.handleInfosClick = this.handleInfosClick.bind(this)
+    this.renderInfos = this.renderInfos.bind(this)
   }
 
   handleCollapsed () {
@@ -38,6 +42,48 @@ class Sidebar extends React.Component {
     this.setState({
       selected: value,
     })
+  }
+
+  handleInfosClick () {
+    this.setState({
+      showInfos: !this.state.showInfos,
+    })
+  }
+
+  renderInfos () {
+    const { infos } = this.props
+
+    return (
+      <div
+        onClick={this.handleInfosClick}
+        role="button"
+        tabIndex="0"
+      >
+        <p>{infos.title}</p>
+        {!this.state.showInfos
+          ? <p>{infos.showMsg}</p>
+          : <p>{infos.hideMsg}</p>
+        }
+
+        {this.state.showInfos &&
+          <div>
+            <ul>
+              {infos.data.map(info => (
+                <li>
+                  <p>{info.title}</p>
+                  <p>{info.value}</p>
+                  <Button
+                    onClick={info.action}
+                  >
+                    {info.actionTitle}
+                  </Button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        }
+      </div>
+    )
   }
 
   renderList () {
@@ -53,7 +99,10 @@ class Sidebar extends React.Component {
 
       if (item.options) {
         return (
-          <li className={classes}>
+          <li
+            key={`${this.id}-${item.value}`}
+            className={classes}
+          >
             <div
               className={theme.text}
               role="button"
@@ -84,7 +133,7 @@ class Sidebar extends React.Component {
       }
 
       return (
-        <li>
+        <li key={`${this.id}-${item.value}`}>
           <div
             className={classes}
             role="button"
@@ -136,6 +185,7 @@ class Sidebar extends React.Component {
                 onChange={onSwitchChange}
               />
             </div>
+            {this.renderInfos()}
           </div>
         }
 
@@ -159,14 +209,26 @@ class Sidebar extends React.Component {
 
 Sidebar.propTypes = {
   theme: PropTypes.shape({
-    a: PropTypes.string,
+    items: PropTypes.string,
+    item: PropTypes.string,
+    itemSelected: PropTypes.string,
+    text: PropTypes.string,
+    option: PropTypes.string,
+    options: PropTypes.string,
+    link: PropTypes.string,
+    sidebar: PropTypes.string,
+    collapsed: PropTypes.string,
+    header: PropTypes.string,
+    menu: PropTypes.string,
+    switchContainer: PropTypes.string,
+    selectedEnvironment: PropTypes.string,
   }),
   title: PropTypes.string.isRequired,
   logo: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(PropTypes.shape({
     value: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    icon: PropTypes.element,
+    icon: PropTypes.func,
     options: PropTypes.arrayOf(PropTypes.shape({
       value: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
@@ -174,10 +236,22 @@ Sidebar.propTypes = {
   })).isRequired,
   onSwitchChange: PropTypes.func.isRequired,
   selectedEnvironment: PropTypes.string.isRequired,
+  infos: PropTypes.shape({
+    title: PropTypes.string,
+    showMsg: PropTypes.string,
+    hideMsg: PropTypes.string,
+    data: PropTypes.arrayOf(PropTypes.shape({
+      title: PropTypes.string,
+      value: PropTypes.string,
+      actionTitle: PropTypes.string,
+      action: PropTypes.func,
+    })),
+  }),
 }
 
 Sidebar.defaultProps = {
   theme: {},
+  infos: {},
 }
 
 export default applyThrmr(Sidebar)

@@ -28,6 +28,26 @@ const items = [
   },
 ]
 
+const infos = {
+  title: 'Nome da empresa',
+  showMsg: 'Mostrar saldo',
+  hideMsg: 'Ocultar saldo',
+  data: [
+    {
+      title: 'Disponível',
+      value: 'R$ 150000',
+      actionTitle: 'Sacar',
+      action: (a) => console.log(a),
+    },
+    {
+      title: 'A receber',
+      value: 'R$ 70000',
+      actionTitle: 'Antecipar',
+      action: (a) => console.log(a),
+    }
+  ]
+}
+
 class SidebarState extends React.Component {
   constructor (props) {
     super(props)
@@ -54,6 +74,7 @@ class SidebarState extends React.Component {
         selected="transacoes.estornadas"
         onSwitchChange={this.handleEnvironment}
         selectedEnvironment={this.state.selectedEnvironment}
+        infos={infos}
       />
     )
   }
