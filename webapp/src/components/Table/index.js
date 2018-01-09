@@ -5,6 +5,9 @@ import {
 } from 'prop-types'
 import { themr } from 'react-css-themr'
 
+import Checkbox from '../Checkbox'
+import Legend from '../Legend'
+
 const applyThemr = themr('UITable')
 
 /**
@@ -33,6 +36,7 @@ const applyThemr = themr('UITable')
  * columns like select and expand
  */
 
+const hideLabel = true
 
 const Table = ({
   theme,
@@ -41,10 +45,13 @@ const Table = ({
     <thead className={theme.tableHead}>
       <tr>
         <th className={theme.check}>
-          <input type="checkbox" />
-        </th>
-        <th className={theme.order}>
-          V
+          <Checkbox
+            name="all"
+            id="all"
+            value="all"
+            label=""
+            onChange={() => null}
+          />
         </th>
         <th>
           Status
@@ -67,47 +74,28 @@ const Table = ({
         <th>
           Custo
         </th>
+        <th className={theme.open} />
       </tr>
     </thead>
     <tbody className={theme.tableBody}>
       <tr>
         <td className={theme.check}>
-          <input type="checkbox" />
-        </td>
-        <td className={theme.order}>
-          V
-        </td>
-        <td>
-          Bpvi
-        </td>
-        <td>
-          2229597000
+          <Checkbox
+            name="1"
+            id="1"
+            value="1"
+            label=""
+            onChange={() => null}
+          />
         </td>
         <td>
-          23/09/2017 - 14:15h
-        </td>
-        <td>
-          67.484.928/0001-60
-        </td>
-        <td>
-          Cartão de crédito Estrangeiro
-        </td>
-        <td>
-          R$ 999.999.999,00
-        </td>
-        <td>
-          R$ 999.999.999,00
-        </td>
-      </tr>
-      <tr>
-        <td className={theme.check}>
-          <input type="checkbox" />
-        </td>
-        <td className={theme.order}>
-          V
-        </td>
-        <td>
-          Bpvi
+          <Legend
+            color="#244d85"
+            acronym="BPVI"
+            hideLabel={hideLabel}
+          >
+            Boleto pago com valor inferior
+          </Legend>
         </td>
         <td>
           2229597000
@@ -127,34 +115,8 @@ const Table = ({
         <td>
           R$ 999.999.999,00
         </td>
-      </tr>
-      <tr>
-        <td className={theme.check}>
-          <input type="checkbox" />
-        </td>
-        <td className={theme.order}>
-          V
-        </td>
-        <td>
-          Bpvi
-        </td>
-        <td>
-          2229597000
-        </td>
-        <td>
-          23/09/2017 - 14:15h
-        </td>
-        <td>
-          67.484.928/0001-60
-        </td>
-        <td>
-          Cartão de crédito Estrangeiro
-        </td>
-        <td>
-          R$ 999.999.999,00
-        </td>
-        <td>
-          R$ 999.999.999,00
+        <td className={theme.open}>
+          <i />
         </td>
       </tr>
       <tr>
