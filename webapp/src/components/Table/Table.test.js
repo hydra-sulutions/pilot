@@ -11,7 +11,6 @@ describe('Table', () => {
   })
 
   describe('Static cases', () => {
-
     it('should have a cursor pointer in all clickable items', () => {
 
     })
@@ -58,13 +57,10 @@ describe('Table', () => {
       it('should render falsy cells with a dash ', () => {
 
       })
-
     })
-
   })
 
   describe('Behaviour cases', () => {
-
     describe('Columns', () => {
       it('should call a sort callback when a header column is clicked', () => {
 
@@ -99,7 +95,6 @@ describe('Table', () => {
       it('should create an outline when is in focus or hover', () => {
 
       })
-
     })
   })
 })
