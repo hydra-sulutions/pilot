@@ -1,4 +1,5 @@
 @import '../colors.css';
+@import './properties.css';
 
 .sidebar,
 .sidebar * {
@@ -10,35 +11,35 @@
   left: 0;
   position: fixed;
   height: 100vh;
-  width: 192px;
+  width: var(--sidebar-width);
   display: block;
-  background-color: var(--color-light-carbon-40)
+  background-color: var(--sidebar-background-color);
 }
 
 .header {
   display: flex;
-  padding: 15px;
+  padding: var(--sidebar-header-padding);
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid var(--color-light-steel-200);
+  border-bottom: var(--sidebar-header-border-bottom);
 }
 
 .menu {
-  padding: 0;
-  color: var(--color-white);
-  border: none;
-  background: none;
+  padding: var(--sidebar-menu-padding);
+  color: var(--sidebar-menu-color);
+  border: var(--sidebar-menu-border);
+  background: var(--sidebar-menu-background);
   cursor: pointer;
 
   svg {
-    width: 17px;
-    height: 12px;
+    width: var(--sidebar-menu-icon-width);
+    height: var(--sidebar-menu-icon-height);
   }
 }
 
 .switchContainer {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: var(--sidebar-switch-container-padding-top);
+  padding-bottom: var(--sidebar-switch-container-padding-bottom);
   display: flex;
   justify-content: center;
 }
@@ -46,73 +47,69 @@
 .items {
   overflow: hidden;
   position: relative;
-  height: calc(100vh - 115px);
+  height: var(--sidebar-items-height);
 }
 
 .items ul {
-  padding: 12px 0;
+  padding: var(--sidebar-items-list-padding);
 }
 
 .item {
-  font-size: 16px;
+  font-size: var(--sidebar-item-font-size);
   list-style: none;
-  color: var(--color-white);
+  color: var(--sidebar-item-color);
   cursor: pointer;
-  border: 1px solid transparent;
+  border: var(--sidebar-item-border);
 }
 
 .item svg {
-  margin-right: 15px;
+  margin-right: var(--sidebar-item-icon-margin-right);
 }
 
 .item:hover {
-  color: var(--color-light-greenish-100);
-  background-color: var(--color-light-carbon-100);
-  border-top-color: var(--color-light-steel-200);
-  border-bottom-color: var(--color-light-steel-200);
+  color: var(--sidebar-item-hover-color);
+  background-color: var(--sidebar-item-hover-background-color);
+  border-top-color: var(--sidebar-item-hover-border-top-color);
+  border-bottom-color: var(--sidebar-item-hover-border-bottom-color);
 }
 
 .itemSelected {
-  color: var(--color-light-greenish-100);
-  background-color: var(--color-light-carbon-100);
-  border-top-color: var(--color-light-steel-200);
-  border-bottom-color: var(--color-light-steel-200);
+  color: var(--sidebar-item-selected-hover-color);
+  background-color: var(--sidebar-item-selected-hover-background-color);
+  border-top-color: var(--sidebar-item-selected-hover-border-top-color);
+  border-bottom-color: var(--sidebar-item-selected-hover-border-bottom-color);
 }
 
 .link,
 .text {
-  padding: 12px 15px;
-  margin: 0;
   display: block;
-  color: inherit;
+  padding: var(--sidebar-text-link-padding);
+  margin: var(--sidebar-text-link-margin);
+  color: var(--sidebar-text-link-color);
 }
 
 .item > .link,
 .item > .text {
-  padding-top: 27px;
-  padding-bottom: 27px;
+  padding-top: var(--sidebar-item-text-link-padding-top);
+  padding-bottom: var(--sidebar-item-text-link-padding-bottom);
 }
 
 .link:hover {
   text-decoration: none;
 }
 
-.text {
-
-}
-
 .options {
-  background: var(--color-light-carbon-50);
+  background: var(--sidebar-options-background-color);
 }
 
 .option {
   list-style: none;
-  color: white;
-  font-size: 14px;
+  color: var(--sidebar-option-color);
+  font-size: var(--sidebar-option-font-size);
 }
 
 .collapsed {
-  width: 78px;
+  width: var(--sidebar-collapsed-width);
 
   & img {
     display: none;
@@ -123,7 +120,7 @@
   }
 
   & header svg {
-    color: var(--color-light-greenish-100);
+    color: var(--sidebar-collapsed-header-icon-color);
   }
 
   & .text span,
@@ -138,13 +135,13 @@
 
   & .text svg,
   & .link svg {
-    margin: 0;
+    margin: var(--sidebar-collapsed-text-link-margin);
   }
 }
 
 .selectedEnvironment {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: var(--sidebar-selected-environment-padding-top);
+  padding-bottom: var(--sidebar-selected-environment-padding-bottom);
 
   text-align: center;
 }
