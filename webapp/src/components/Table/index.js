@@ -5,6 +5,8 @@ import {
 } from 'prop-types'
 import { themr } from 'react-css-themr'
 
+import IconArrowDown from 'react-icons/lib/md/keyboard-arrow-down'
+import IconLongArrowUp from 'react-icons/lib/fa/long-arrow-up'
 import Checkbox from '../Checkbox'
 import Legend from '../Legend'
 
@@ -53,26 +55,73 @@ const Table = ({
             onChange={() => null}
           />
         </th>
-        <th>
-          Status
+        <th className={theme.status}>
+          <span>
+            Status
+          </span>
+          <span>
+            <IconLongArrowUp />
+          </span>
         </th>
         <th>
-          ID da transação
+          <div className={theme.title}>
+            <span>
+              ID da transação
+            </span>
+            <span>
+              <IconLongArrowUp />
+            </span>
+          </div>
         </th>
         <th>
-          Data da transação
+          <div className={theme.title}>
+            <span>
+            Data da transação
+            </span>
+            <span>
+              <IconLongArrowUp />
+            </span>
+          </div>
         </th>
         <th>
-          CPF / CNPJ
+          <div className={theme.title}>
+            <span>
+            CPF / CNPJ
+            </span>
+            <span>
+              <IconLongArrowUp />
+            </span>
+          </div>
         </th>
         <th>
-          Forma de pagamento
+          <div className={theme.title}>
+            <span>
+            Forma de pagamento
+            </span>
+            <span>
+              <IconLongArrowUp />
+            </span>
+          </div>
         </th>
         <th>
-          Valor capturado
+          <div className={theme.title}>
+            <span>
+            Valor capturado
+            </span>
+            <span>
+              <IconLongArrowUp />
+            </span>
+          </div>
         </th>
-        <th>
-          Custo
+        <th className={theme.active}>
+          <div className={theme.title}>
+            <span>
+            Custo
+            </span>
+            <span>
+              <IconLongArrowUp />
+            </span>
+          </div>
         </th>
         <th className={theme.open} />
       </tr>
@@ -88,7 +137,7 @@ const Table = ({
             onChange={() => null}
           />
         </td>
-        <td>
+        <td className={theme.status}>
           <Legend
             color="#244d85"
             acronym="BPVI"
@@ -113,10 +162,98 @@ const Table = ({
           R$ 999.999.999,00
         </td>
         <td>
-          R$ 999.999.999,00
+          R$ 100.000,00
         </td>
         <td className={theme.open}>
-          <i />
+          <div className={theme.arrow}>
+            <IconArrowDown />
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td className={theme.check}>
+          <Checkbox
+            name="2"
+            id="2"
+            value="2"
+            label=""
+            onChange={() => null}
+          />
+        </td>
+        <td className={theme.status}>
+          <Legend
+            color="#57be76"
+            acronym="P"
+            hideLabel={hideLabel}
+          >
+            Pago
+          </Legend>
+        </td>
+        <td>
+          3229597000
+        </td>
+        <td>
+          24/09/2017 - 14:15h
+        </td>
+        <td>
+          354.946.68-52
+        </td>
+        <td>
+          Cartão de crédito Estrangeiro
+        </td>
+        <td>
+          R$ 899.999.999,00
+        </td>
+        <td>
+          R$ 12.000,00
+        </td>
+        <td className={theme.open}>
+          <div className={theme.arrow}>
+            <IconArrowDown />
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td className={theme.check}>
+          <Checkbox
+            name="3"
+            id="3"
+            value="3"
+            label=""
+            onChange={() => null}
+          />
+        </td>
+        <td className={theme.status}>
+          <Legend
+            color="#f4b23e"
+            acronym="A"
+            hideLabel={hideLabel}
+          >
+            Autorizada
+          </Legend>
+        </td>
+        <td>
+          4330072092
+        </td>
+        <td>
+          25/09/2017 - 14:15h
+        </td>
+        <td>
+          67.484.928/0001-60
+        </td>
+        <td>
+          Cartão de crédito Estrangeiro
+        </td>
+        <td>
+          R$ 799.999.999,00
+        </td>
+        <td>
+          R$ 13.000,00
+        </td>
+        <td className={theme.open}>
+          <div className={theme.arrow}>
+            <IconArrowDown />
+          </div>
         </td>
       </tr>
       <tr>
@@ -158,6 +295,41 @@ const Table = ({
                 </li>
               </ul>
             </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td className={theme.check}>
+          <Checkbox
+            name="4"
+            id="4"
+            value="4"
+            label=""
+            onChange={() => null}
+          />
+        </td>
+        <td className={theme.status}>
+          <Legend
+            color="#951e3c"
+            acronym="P"
+            hideLabel={hideLabel}
+          >
+            Processando
+          </Legend>
+        </td>
+        <td>
+          7820847072
+        </td>
+        <td className={theme.empty} />
+        <td className={theme.empty} />
+        <td className={theme.empty} />
+        <td className={theme.empty} />
+        <td>
+          R$ 16.000,00
+        </td>
+        <td className={theme.open}>
+          <div className={theme.arrow}>
+            <IconArrowDown />
           </div>
         </td>
       </tr>

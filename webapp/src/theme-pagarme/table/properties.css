@@ -2,7 +2,17 @@
 @import "../typography.css";
 
 :root {
-  --table-border: none;
+  --table-border: solid 0.7px var(--color-light-smoke-40);
   --table-font-family: var(--body-font-family);
-  --table-backgound-color: var(--color-white);
+  --table-head-tr-background-color: var(--color-light-smoke-40);
+  --table-head-tr-border: solid 0.7px var(--color-light-iron-50);
+  --table-head-th-color: var(--color-light-coal-100);
+  --table-head-th-separator-border-right: solid 0.7px var(--color-light-iron-50);
+  --table-head-th-active-color: var(--color-light-greenish-100);
+  --table-head-th-active-border-bottom-color: var(--color-light-greenish-gradient);
+  --table-body-tr-odd-background-color: var(--color-white);
+  --table-body-tr-even-background-color: var(--color-light-smoke-50);
+  --table-body-td-color: var(--color-light-steel-100);
+  --table-body-td-empty-background-color: var(--color-light-steel-100);
+  --table-arrow-border: 1px solid var(--color-light-iron-50);
 }
