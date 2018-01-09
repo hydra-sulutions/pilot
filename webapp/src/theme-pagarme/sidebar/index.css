@@ -74,10 +74,10 @@
 }
 
 .itemSelected {
-  color: var(--sidebar-item-selected-hover-color);
-  background-color: var(--sidebar-item-selected-hover-background-color);
-  border-top-color: var(--sidebar-item-selected-hover-border-top-color);
-  border-bottom-color: var(--sidebar-item-selected-hover-border-bottom-color);
+  color: var(--sidebar-item-selected-color);
+  background-color: var(--sidebar-item-selected-background-color);
+  border-top-color: var(--sidebar-item-selected-border-top-color);
+  border-bottom-color: var(--sidebar-item-selected-border-bottom-color);
 }
 
 .link,
