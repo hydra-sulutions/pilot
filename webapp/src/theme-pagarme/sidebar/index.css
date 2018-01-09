@@ -58,16 +58,23 @@
   list-style: none;
   color: var(--color-white);
   cursor: pointer;
+  border: 1px solid transparent;
 }
 
 .item svg {
   margin-right: 15px;
 }
 
+.item:hover {
+  color: var(--color-light-greenish-100);
+  background-color: var(--color-light-carbon-100);
+  border-top-color: var(--color-light-steel-200);
+  border-bottom-color: var(--color-light-steel-200);
+}
+
 .itemSelected {
   color: var(--color-light-greenish-100);
   background-color: var(--color-light-carbon-100);
-  border: 1px solid transparent;
   border-top-color: var(--color-light-steel-200);
   border-bottom-color: var(--color-light-steel-200);
 }
@@ -102,4 +109,35 @@
   list-style: none;
   color: white;
   font-size: 14px;
+}
+
+.collapsed {
+  width: 78px;
+
+  & img {
+    display: none;
+  }
+
+  & header {
+    justify-content: center;
+  }
+
+  & header svg {
+    color: var(--color-light-greenish-100);
+  }
+
+  & .text span,
+  & .link span {
+    display: none;
+  }
+
+  & .text,
+  & .link {
+    text-align: center;
+  }
+
+  & .text svg,
+  & .link svg {
+    margin: 0;
+  }
 }
