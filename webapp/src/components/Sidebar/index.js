@@ -5,8 +5,10 @@ import shortid from 'shortid'
 import MdMenu from 'react-icons/lib/md/menu'
 import cx from 'classnames'
 import PerfectScrollBar from 'react-perfect-scrollbar'
+import IconArrowUp from 'react-icons/lib/md/keyboard-arrow-up'
 import IconArrowDown from 'react-icons/lib/md/keyboard-arrow-down'
 import SegmentedSwitch from '../SegmentedSwitch'
+import Tag from '../Tag'
 
 const applyThrmr = themr('UISidebar')
 
@@ -44,7 +46,7 @@ class Sidebar extends React.Component {
       items,
     } = this.props
 
-    const list = items.map((item) => {
+    return items.map((item) => {
       const classes = cx(theme.item, {
         [theme.itemSelected]: item.value === this.state.selected,
       })
@@ -58,7 +60,17 @@ class Sidebar extends React.Component {
               onClick={() => this.handleSelection(item.value)}
               tabIndex="0"
             >
-              <item.icon size={18} /> <span>{item.title} <IconArrowDown size={18} /></span>
+              <item.icon size={this.state.collapsed ? 25 : 18} />
+
+              <span>
+                {item.title}
+                {
+                  this.state.selected === item.value
+                    ? <IconArrowUp size={18} />
+                    : <IconArrowDown size={18} />
+                }
+
+              </span>
             </div>
             {(item.value === this.state.selected && !this.state.collapsed) &&
               <ul className={theme.options}>
@@ -79,13 +91,14 @@ class Sidebar extends React.Component {
             onClick={() => this.handleSelection(item.value)}
             tabIndex="0"
           >
-            <a className={theme.link}><item.icon size={18} /> <span>{item.title}</span></a>
+            <a className={theme.link}>
+              <item.icon size={this.state.collapsed ? 25 : 18} />
+              <span>{item.title}</span>
+            </a>
           </div>
         </li>
       )
     })
-
-    return list
   }
 
   render () {
@@ -127,7 +140,9 @@ class Sidebar extends React.Component {
         }
 
         {this.state.collapsed &&
-          <div><p>{selectedEnvironment}</p></div>
+          <div className={theme.selectedEnvironment}>
+            <Tag key={selectedEnvironment}>{selectedEnvironment}</Tag>
+          </div>
         }
 
         <nav>
