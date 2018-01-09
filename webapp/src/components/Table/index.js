@@ -7,6 +7,33 @@ import { themr } from 'react-css-themr'
 
 const applyThemr = themr('UITable')
 
+/**
+ * Table notes
+ * simple, light weight table with:
+ * customizable columns which accept icons/components in the cells
+ * expansible lines
+ * coloumn ordenation in the header cells
+ * lines with breakable lines
+ * selector for all lines and a genereal selector in the header
+ * reorganizable columns
+ * zebra lines
+ * default visualization mode for falsy values
+ *
+ * @param {Object} theme - the object like css classes names for css modules
+ * @param {Array} columns - columns structure and data accessor for each column
+ * each column must have a identifier, an header/title and a renderer or and accessor
+ * @param {Array} data - data which will be used to create the lines
+ * @param {Array} selectItems - a list of selected items identifiers
+ *
+ * @param {Boolean} sorable
+ * @param {Boolean} loading
+ * @param {Boolean} selectalbe
+ * @param {Boolean} expandable
+ * @param {Number} columnsLimit - limit of showable columns except by the utility
+ * columns like select and expand
+ */
+
+
 const Table = ({
   theme,
 }) => (
