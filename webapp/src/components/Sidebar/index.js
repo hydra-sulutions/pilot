@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react'
 import PropTypes from 'prop-types'
 import { themr } from 'react-css-themr'
@@ -6,8 +5,6 @@ import shortid from 'shortid'
 import MdMenu from 'react-icons/lib/md/menu'
 import cx from 'classnames'
 import PerfectScrollBar from 'react-perfect-scrollbar'
-import MdEventNote from 'react-icons/lib/md/event-note'
-import MdFreeBreakfast from 'react-icons/lib/md/free-breakfast'
 import IconArrowDown from 'react-icons/lib/md/keyboard-arrow-down'
 import SegmentedSwitch from '../SegmentedSwitch'
 
@@ -18,7 +15,7 @@ class Sidebar extends React.Component {
     super(props)
 
     this.state = {
-      selected: 'minha-conta',
+      selected: '',
       collapsed: false,
     }
 
@@ -26,11 +23,18 @@ class Sidebar extends React.Component {
 
     this.renderList = this.renderList.bind(this)
     this.handleCollapsed = this.handleCollapsed.bind(this)
+    this.handleSelection = this.handleSelection.bind(this)
   }
 
   handleCollapsed () {
     this.setState({
       collapsed: !this.state.collapsed,
+    })
+  }
+
+  handleSelection (value) {
+    this.setState({
+      selected: value,
     })
   }
 
@@ -48,9 +52,14 @@ class Sidebar extends React.Component {
       if (item.options) {
         return (
           <li className={classes}>
-            <p className={theme.text}>
+            <div
+              className={theme.text}
+              role="button"
+              onClick={() => this.handleSelection(item.value)}
+              tabIndex="0"
+            >
               <item.icon size={18} /> <span>{item.title} <IconArrowDown size={18} /></span>
-            </p>
+            </div>
             {(item.value === this.state.selected && !this.state.collapsed) &&
               <ul className={theme.options}>
                 {item.options.map(opt => (
@@ -63,8 +72,15 @@ class Sidebar extends React.Component {
       }
 
       return (
-        <li className={classes}>
-          <a className={theme.link}><item.icon size={18} /> <span>{item.title}</span></a>
+        <li>
+          <div
+            className={classes}
+            role="button"
+            onClick={() => this.handleSelection(item.value)}
+            tabIndex="0"
+          >
+            <a className={theme.link}><item.icon size={18} /> <span>{item.title}</span></a>
+          </div>
         </li>
       )
     })
@@ -74,7 +90,6 @@ class Sidebar extends React.Component {
 
   render () {
     const {
-      items,
       theme,
       logo,
       title,
@@ -98,18 +113,22 @@ class Sidebar extends React.Component {
           </button>
         </header>
 
-        <div>
-          <div className={theme.switchContainer}>
-            <SegmentedSwitch
-              items={['live', 'test']}
-              selected={selectedEnvironment}
-              name={`{this.id}-live-test`}
-              onChange={onSwitchChange}
-            />
-          </div>
+        {!this.state.collapsed &&
           <div>
+            <div className={theme.switchContainer}>
+              <SegmentedSwitch
+                items={['live', 'test']}
+                selected={selectedEnvironment}
+                name={`${this.id}-live-test`}
+                onChange={onSwitchChange}
+              />
+            </div>
           </div>
-        </div>
+        }
+
+        {this.state.collapsed &&
+          <div><p>{selectedEnvironment}</p></div>
+        }
 
         <nav>
           <PerfectScrollBar className={theme.items}>
@@ -124,8 +143,9 @@ class Sidebar extends React.Component {
 }
 
 Sidebar.propTypes = {
-  theme: PropTypes.object,
-  selected: PropTypes.string,
+  theme: PropTypes.shape({
+    a: PropTypes.string,
+  }),
   title: PropTypes.string.isRequired,
   logo: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(PropTypes.shape({
@@ -139,6 +159,10 @@ Sidebar.propTypes = {
   })).isRequired,
   onSwitchChange: PropTypes.func.isRequired,
   selectedEnvironment: PropTypes.string.isRequired,
+}
+
+Sidebar.defaultProps = {
+  theme: {},
 }
 
 export default applyThrmr(Sidebar)
