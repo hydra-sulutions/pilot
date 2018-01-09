@@ -87,9 +87,12 @@
 }
 
 .options {
-
+  background: var(--color-light-carbon-50);
+  padding: 0;
 }
 
 .option {
-
+  list-style: none;
+  color: white;
+  font-size: 14px;
 }
