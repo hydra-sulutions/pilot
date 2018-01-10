@@ -1,23 +1,26 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {
-  shape,
-  string,
   arrayOf,
   bool,
-  oneOfType,
   func,
+  number,
+  oneOfType,
+  shape,
+  string,
 } from 'prop-types'
+import {
+  append,
+  contains,
+  ifElse,
+  without,
+} from 'ramda'
 import { themr } from 'react-css-themr'
 import shortid from 'shortid'
-// import classNames from 'classnames'
 
-// import IconArrowDown from 'react-icons/lib/md/keyboard-arrow-down'
-
-// import Button from '../Button'
-// import Checkbox from '../Checkbox'
 import Legend from '../Legend'
 import TableHead from './TableHead'
 import TableRow from './TableRow'
+import TableExpandedRow from './TableExpandedRow'
 
 const applyThemr = themr('UITable')
 
@@ -47,9 +50,6 @@ const applyThemr = themr('UITable')
  * columns like select and expand
  */
 
-// const hideLabel = true
-// const checked = false
-
 const hideLabel = true
 
 const mock = {
@@ -58,8 +58,8 @@ const mock = {
       title: 'Status',
       renderer: item => (
         <Legend
-          color="#244d85"
-          acronym="BPVI"
+          color={item.status_color}
+          acronym={item.status_acronym}
           hideLabel={hideLabel}
         >
           {item.status}
@@ -76,6 +76,19 @@ const mock = {
   data: [
     {
       status: 'Boleto pago com valor inferior',
+      status_acronym: 'BPVI',
+      status_color: '#244d85',
+      id: '2229597000',
+      date_created: '23/09/2017 - 14:15h',
+      document_number: '67.484.928/0001-60',
+      payment_method: 'boleto',
+      paid_amount: 'R$ 999.999.999,00',
+      cost: 'R$ 100.000,00',
+    },
+    {
+      status: 'Pago',
+      status_acronym: 'P',
+      status_color: '#57be76',
       id: '2229597000',
       date_created: '23/09/2017 - 14:15h',
       document_number: '67.484.928/0001-60',
@@ -86,34 +99,95 @@ const mock = {
   ],
 }
 
-
-const Table = ({
-  theme,
-  selectable,
-  expandable,
-  rows,
-  columns,
-}) => (
-  <table className={theme.table}>
-    <TableHead columns={columns} />
-    <tbody className={theme.tableBody}>
-      {
-        rows.map(row =>
-          (
-            <TableRow
-              key={shortid()}
-              data={row}
-              columns={columns}
-              striped="odd"
-              selectable={selectable}
-              expandable={expandable}
-            />
-          )
-        )
-      }
-    </tbody>
-  </table>
+const toggleItem = item => ifElse(
+  contains(item),
+  without([item]),
+  append(item)
 )
+
+const toggleRow = (rowId, rows) => {
+  const toggle = toggleItem(rowId)
+  return toggle(rows)
+}
+
+
+class Table extends Component {
+  constructor (props) {
+    super(props)
+    const { expandedRows, selectedRows } = props
+    this.state = {
+      expandedRows,
+      selectedRows,
+    }
+
+    this.renderRow = this.renderRow.bind(this)
+    this.handleRowSelect = this.handleRowSelect.bind(this)
+    this.handleRowExpand = this.handleRowExpand.bind(this)
+  }
+
+  handleRowSelect (rowId) {
+    const rows = toggleRow(rowId, this.state.selectedRows)
+    this.setState({
+      selectedRows: rows,
+    })
+  }
+
+  handleRowExpand (rowId) {
+    const rows = toggleRow(rowId, this.state.expandedRows)
+    this.setState({
+      expandedRows: rows,
+    })
+  }
+
+  renderRow (row, index) {
+    const { expandedRows, selectedRows } = this.state
+    const { selectable, expandable, columns } = this.props
+    const isExpanded = contains(index, expandedRows)
+    const isSelected = contains(index, selectedRows)
+    const stripedClass = index % 2 === 0 ? 'even' : 'odd'
+
+    const rowProps = {
+      key: shortid(),
+      data: row,
+      columns,
+      striped: stripedClass,
+      selectable,
+      expandable,
+      expanded: isExpanded,
+      selected: isSelected,
+    }
+    const newRow = <TableRow {...rowProps} />
+
+    if (isExpanded) {
+      const expanded = <TableExpandedRow striped={stripedClass} data={row} />
+
+      return [
+        newRow,
+        expanded,
+      ]
+    }
+
+    return newRow
+  }
+
+  render () {
+    const {
+      theme,
+      rows,
+      columns,
+    } = this.props
+    return (
+      <table className={theme.table}>
+        <TableHead columns={columns} />
+        <tbody className={theme.tableBody}>
+          {
+            rows.map(this.renderRow)
+          }
+        </tbody>
+      </table>
+    )
+  }
+}
 
 Table.propTypes = {
   theme: shape({
@@ -127,9 +201,11 @@ Table.propTypes = {
     ]),
     renderer: func,
   })).isRequired,
+  expandable: bool,
   rows: arrayOf(shape({})).isRequired,
   selectable: bool,
-  expandable: bool,
+  selectedRows: arrayOf(number),
+  expandedRows: arrayOf(number),
 }
 
 Table.defaultProps = {
@@ -138,222 +214,8 @@ Table.defaultProps = {
   rows: mock.data,
   selectable: true,
   expandable: true,
+  selectedRows: [0],
+  expandedRows: [1],
 }
 
 export default applyThemr(Table)
-
-
-// <tr className={theme.odd}>
-// <td className={theme.check}>
-//   <Checkbox
-//     name="1"
-//     id="1"
-//     value="1"
-//     label=""
-//     onChange={() => null}
-//     checked={checked}
-//   />
-// </td>
-// <td className={theme.status}>
-//   <Legend
-//     color="#244d85"
-//     acronym="BPVI"
-//     hideLabel={hideLabel}
-//   >
-//     Boleto pago com valor inferior
-//   </Legend>
-// </td>
-// <td>
-//   2229597000
-// </td>
-// <td>
-//   23/09/2017 - 14:15h
-// </td>
-// <td>
-//   67.484.928/0001-60
-// </td>
-// <td>
-//   Cartão de crédito Estrangeiro
-// </td>
-// <td>
-//   R$ 999.999.999,00
-// </td>
-// <td>
-//   R$ 100.000,00
-// </td>
-// <td className={theme.open}>
-//   <div className={theme.arrow}>
-//     <IconArrowDown />
-//   </div>
-// </td>
-// </tr>
-// <tr className={theme.even}>
-// <td className={theme.check}>
-//   <Checkbox
-//     name="2"
-//     id="2"
-//     value="2"
-//     label=""
-//     onChange={() => null}
-//     checked={checked}
-//   />
-// </td>
-// <td className={theme.status}>
-//   <Legend
-//     color="#57be76"
-//     acronym="P"
-//     hideLabel={hideLabel}
-//   >
-//     Pago
-//   </Legend>
-// </td>
-// <td>
-//   3229597000
-// </td>
-// <td>
-//   24/09/2017 - 14:15h
-// </td>
-// <td>
-//   354.946.68-52
-// </td>
-// <td>
-//   Cartão de crédito Estrangeiro
-// </td>
-// <td>
-//   R$ 899.999.999,00
-// </td>
-// <td>
-//   R$ 12.000,00
-// </td>
-// <td className={theme.open}>
-//   <div className={theme.arrow}>
-//     <IconArrowDown />
-//   </div>
-// </td>
-// </tr>
-// <tr className={theme.odd}>
-// <td className={theme.check}>
-//   <Checkbox
-//     name="3"
-//     id="3"
-//     value="3"
-//     label=""
-//     onChange={() => null}
-//     checked={checked}
-//   />
-// </td>
-// <td className={theme.status}>
-//   <Legend
-//     color="#f4b23e"
-//     acronym="A"
-//     hideLabel={hideLabel}
-//   >
-//     Autorizada
-//   </Legend>
-// </td>
-// <td>
-//   4330072092
-// </td>
-// <td>
-//   25/09/2017 - 14:15h
-// </td>
-// <td>
-//   67.484.928/0001-60
-// </td>
-// <td>
-//   Cartão de crédito Estrangeiro
-// </td>
-// <td>
-//   R$ 799.999.999,00
-// </td>
-// <td>
-//   R$ 13.000,00
-// </td>
-// <td className={theme.open}>
-//   <div className={theme.arrow}>
-//     <IconArrowDown />
-//   </div>
-// </td>
-// </tr>
-// <tr className={classNames([theme.odd, theme.expandable])}>
-// <td colSpan="9">
-//   <div className={theme.merged}>
-//     <ul>
-//       <li>
-//         <span>Endereço</span>
-//         Rua Gomes de Carvalho, 1609 | São Paulo | São Paulo/SP
-//       </li>
-//       <li>
-//         <span>Bandeira</span>
-//         Mastercard
-//       </li>
-//       <li>
-//         <span>VALOR LÍQUIDO</span>
-//         R$ 999.999.989,00
-//       </li>
-//       <li>
-//         <span>Bandeira</span>
-//         Mastercard
-//       </li>
-//       <li>
-//         <span>VALOR LÍQUIDO</span>
-//         R$ 999.999.989,00
-//       </li>
-//       <li>
-//         <span>Bandeira</span>
-//         Mastercard
-//       </li>
-//       <li>
-//         <span>Bandeira</span>
-//         Mastercard
-//       </li>
-//       <li>
-//         <span>Bandeira</span>
-//         Mastercard
-//       </li>
-//     </ul>
-//     <Button
-//       fill="outline"
-//       relevance="normal"
-//     >
-//       VER DETALHES
-//     </Button>
-//   </div>
-// </td>
-// </tr>
-// <tr className={theme.even}>
-// <td className={theme.check}>
-//   <Checkbox
-//     name="4"
-//     id="4"
-//     value="4"
-//     label=""
-//     onChange={() => null}
-//     checked={checked}
-//   />
-// </td>
-// <td className={theme.status}>
-//   <Legend
-//     color="#951e3c"
-//     acronym="P"
-//     hideLabel={hideLabel}
-//   >
-//     Processando
-//   </Legend>
-// </td>
-// <td>
-//   7820847072
-// </td>
-// <td className={theme.empty} />
-// <td className={theme.empty} />
-// <td className={theme.empty} />
-// <td className={theme.empty} />
-// <td>
-//   R$ 16.000,00
-// </td>
-// <td className={theme.open}>
-//   <div className={theme.arrow}>
-//     <IconArrowDown />
-//   </div>
-// </td>
-// </tr>
