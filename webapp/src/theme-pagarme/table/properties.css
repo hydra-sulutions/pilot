@@ -4,6 +4,7 @@
 :root {
   --table-border: solid 0.7px var(--color-light-smoke-40);
   --table-font-family: var(--body-font-family);
+  --table-font-size: 14px;
   --table-head-tr-background-color: var(--color-light-smoke-40);
   --table-head-tr-border: solid 0.7px var(--color-light-iron-50);
   --table-head-th-color: var(--color-light-coal-100);
