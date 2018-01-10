@@ -120,7 +120,7 @@ class Sidebar extends React.Component {
               onClick={() => this.handleSelection(item.value)}
               tabIndex="0"
             >
-              <item.icon size={this.state.collapsed ? 25 : 18} />
+              <item.icon size={this.state.collapsed ? 25 : 21} />
 
               <span>
                 {item.title}
@@ -152,7 +152,7 @@ class Sidebar extends React.Component {
             tabIndex="0"
           >
             <a className={theme.link}>
-              <item.icon size={this.state.collapsed ? 25 : 18} />
+              <item.icon size={this.state.collapsed ? 25 : 21} />
               <span>{item.title}</span>
             </a>
           </div>
@@ -177,7 +177,7 @@ class Sidebar extends React.Component {
     return (
       <div className={sidebarClasses}>
         <header className={theme.header}>
-          <img src={logo} alt={title} width={101} />
+          <img className={theme.brand} src={logo} alt={title} />
           <button
             className={theme.menu}
             onClick={this.handleCollapsed}

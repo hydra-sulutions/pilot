@@ -1,7 +1,7 @@
-@import '../colors.css';
+@import "../colors.css";
+@import "../media.css";
 
 :root {
-  --sidebar-width: 192px;
   --sidebar-background-color: var(--color-light-carbon-40);
   --sidebar-header-padding: 15px;
   --sidebar-header-border-bottom: 1px solid var(--color-light-steel-200);
@@ -9,8 +9,6 @@
   --sidebar-menu-color: var(--color-white);
   --sidebar-menu-border: none;
   --sidebar-menu-background: none;
-  --sidebar-menu-icon-width: 17px;
-  --sidebar-menu-icon-height: 12px;
   --sidebar-switch-container-padding-top: 15px;
   --sidebar-switch-container-padding-bottom: 15px;
   --sidebar-items-height: calc(100vh - 115px);
@@ -40,4 +38,25 @@
   --sidebar-collapsed-text-link-margin: 0;
   --sidebar-selected-environment-padding-top: 15px;
   --sidebar-selected-environment-padding-bottom: 15px;
+}
+
+@media (--media-tablet) {
+  :root {
+    --sidebar-width: 192px;
+  }
+}
+
+@media (--media-desk) {
+  :root {
+    --sidebar-width: 222px;
+  }
+}
+
+@media (--media-tv) {
+  :root {
+    --sidebar-width: 320px;
+    --sidebar-brand-width: 170px;
+    --sidebar-menu-icon-width: 25px;
+    --sidebar-menu-icon-height: 18px;
+  }
 }
