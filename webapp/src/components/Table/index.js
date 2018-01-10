@@ -4,9 +4,12 @@ import {
   string,
 } from 'prop-types'
 import { themr } from 'react-css-themr'
+import classNames from 'classnames'
 
 import IconArrowDown from 'react-icons/lib/md/keyboard-arrow-down'
+
 import IconLongArrowUp from 'react-icons/lib/fa/long-arrow-up'
+import Button from '../Button'
 import Checkbox from '../Checkbox'
 import Legend from '../Legend'
 
@@ -39,7 +42,7 @@ const applyThemr = themr('UITable')
  */
 
 const hideLabel = true
-
+const checked = false
 const Table = ({
   theme,
 }) => (
@@ -53,6 +56,7 @@ const Table = ({
             value="all"
             label=""
             onChange={() => null}
+            checked={checked}
           />
         </th>
         <th className={theme.status}>
@@ -127,7 +131,7 @@ const Table = ({
       </tr>
     </thead>
     <tbody className={theme.tableBody}>
-      <tr>
+      <tr className={theme.odd}>
         <td className={theme.check}>
           <Checkbox
             name="1"
@@ -135,6 +139,7 @@ const Table = ({
             value="1"
             label=""
             onChange={() => null}
+            checked={checked}
           />
         </td>
         <td className={theme.status}>
@@ -170,7 +175,7 @@ const Table = ({
           </div>
         </td>
       </tr>
-      <tr>
+      <tr className={theme.even}>
         <td className={theme.check}>
           <Checkbox
             name="2"
@@ -178,6 +183,7 @@ const Table = ({
             value="2"
             label=""
             onChange={() => null}
+            checked={checked}
           />
         </td>
         <td className={theme.status}>
@@ -213,7 +219,7 @@ const Table = ({
           </div>
         </td>
       </tr>
-      <tr>
+      <tr className={theme.odd}>
         <td className={theme.check}>
           <Checkbox
             name="3"
@@ -221,6 +227,7 @@ const Table = ({
             value="3"
             label=""
             onChange={() => null}
+            checked={checked}
           />
         </td>
         <td className={theme.status}>
@@ -256,49 +263,53 @@ const Table = ({
           </div>
         </td>
       </tr>
-      <tr>
+      <tr className={classNames([theme.odd, theme.expandable])}>
         <td colSpan="9">
           <div className={theme.merged}>
-            <div>
-              <ul>
-                <li>
-                  <span>Endereço</span>
-                  Rua Gomes de Carvalho, 1609 | São Paulo | São Paulo/SP
-                </li>
-                <li>
-                  <span>Bandeira</span>
-                  Mastercard
-                </li>
-                <li>
-                  <span>VALOR LÍQUIDO</span>
-                  R$ 999.999.989,00
-                </li>
-                <li>
-                  <span>Bandeira</span>
-                  Mastercard
-                </li>
-                <li>
-                  <span>Bandeira</span>
-                  Mastercard
-                </li>
-                <li>
-                  <span>VALOR LÍQUIDO</span>
-                  R$ 999.999.989,00
-                </li>
-                <li>
-                  <span>Bandeira</span>
-                  Mastercard
-                </li>
-                <li>
-                  <span>Bandeira</span>
-                  Mastercard
-                </li>
-              </ul>
-            </div>
+            <ul>
+              <li>
+                <span>Endereço</span>
+                Rua Gomes de Carvalho, 1609 | São Paulo | São Paulo/SP
+              </li>
+              <li>
+                <span>Bandeira</span>
+                Mastercard
+              </li>
+              <li>
+                <span>VALOR LÍQUIDO</span>
+                R$ 999.999.989,00
+              </li>
+              <li>
+                <span>Bandeira</span>
+                Mastercard
+              </li>
+              <li>
+                <span>VALOR LÍQUIDO</span>
+                R$ 999.999.989,00
+              </li>
+              <li>
+                <span>Bandeira</span>
+                Mastercard
+              </li>
+              <li>
+                <span>Bandeira</span>
+                Mastercard
+              </li>
+              <li>
+                <span>Bandeira</span>
+                Mastercard
+              </li>
+            </ul>
+            <Button
+              fill="outline"
+              relevance="normal"
+            >
+              VER DETALHES
+            </Button>
           </div>
         </td>
       </tr>
-      <tr>
+      <tr className={theme.even}>
         <td className={theme.check}>
           <Checkbox
             name="4"
@@ -306,6 +317,7 @@ const Table = ({
             value="4"
             label=""
             onChange={() => null}
+            checked={checked}
           />
         </td>
         <td className={theme.status}>
