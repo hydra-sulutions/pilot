@@ -7,46 +7,46 @@
 }
 
 .sidebar {
-  top: 0;
+  background-color: var(--sidebar-background-color);
+  display: block;
+  height: 100vh;
   left: 0;
   position: fixed;
-  height: 100vh;
+  top: 0;
   width: var(--sidebar-width);
-  display: block;
-  background-color: var(--sidebar-background-color);
 }
 
 .header {
-  display: flex;
-  padding: var(--sidebar-header-padding);
   align-items: center;
-  justify-content: space-between;
   border-bottom: var(--sidebar-header-border-bottom);
+  display: flex;
+  justify-content: space-between;
+  padding: var(--sidebar-header-padding);
 }
 
 .menu {
-  padding: var(--sidebar-menu-padding);
-  color: var(--sidebar-menu-color);
-  border: var(--sidebar-menu-border);
   background: var(--sidebar-menu-background);
+  border: var(--sidebar-menu-border);
+  color: var(--sidebar-menu-color);
   cursor: pointer;
+  padding: var(--sidebar-menu-padding);
 
   svg {
-    width: var(--sidebar-menu-icon-width);
     height: var(--sidebar-menu-icon-height);
+    width: var(--sidebar-menu-icon-width);
   }
 }
 
 .section {
-  overflow: auto;
   height: calc(100vh - 56px);
+  overflow: auto;
 }
 
 .switchContainer {
-  padding-top: var(--sidebar-switch-container-padding-top);
-  padding-bottom: var(--sidebar-switch-container-padding-bottom);
   display: flex;
   justify-content: center;
+  padding-bottom: var(--sidebar-switch-container-padding-bottom);
+  padding-top: var(--sidebar-switch-container-padding-top);
 }
 
 .items {
@@ -58,11 +58,11 @@
 }
 
 .item {
-  font-size: var(--sidebar-item-font-size);
-  list-style: none;
+  border: var(--sidebar-item-border);
   color: var(--sidebar-item-color);
   cursor: pointer;
-  border: var(--sidebar-item-border);
+  font-size: var(--sidebar-item-font-size);
+  list-style: none;
 }
 
 .item svg {
@@ -70,31 +70,31 @@
 }
 
 .item:hover {
-  color: var(--sidebar-item-hover-color);
   background-color: var(--sidebar-item-hover-background-color);
-  border-top-color: var(--sidebar-item-hover-border-top-color);
   border-bottom-color: var(--sidebar-item-hover-border-bottom-color);
+  border-top-color: var(--sidebar-item-hover-border-top-color);
+  color: var(--sidebar-item-hover-color);
 }
 
 .itemSelected {
-  color: var(--sidebar-item-selected-color);
   background-color: var(--sidebar-item-selected-background-color);
-  border-top-color: var(--sidebar-item-selected-border-top-color);
   border-bottom-color: var(--sidebar-item-selected-border-bottom-color);
+  border-top-color: var(--sidebar-item-selected-border-top-color);
+  color: var(--sidebar-item-selected-color);
 }
 
 .link,
 .text {
-  display: block;
-  padding: var(--sidebar-text-link-padding);
-  margin: var(--sidebar-text-link-margin);
   color: var(--sidebar-text-link-color);
+  display: block;
+  margin: var(--sidebar-text-link-margin);
+  padding: var(--sidebar-text-link-padding);
 }
 
 .item > .link,
 .item > .text {
-  padding-top: var(--sidebar-item-text-link-padding-top);
   padding-bottom: var(--sidebar-item-text-link-padding-bottom);
+  padding-top: var(--sidebar-item-text-link-padding-top);
 }
 
 .link:hover {
@@ -106,9 +106,9 @@
 }
 
 .option {
-  list-style: none;
   color: var(--sidebar-option-color);
   font-size: var(--sidebar-option-font-size);
+  list-style: none;
 }
 
 .collapsed {
@@ -143,9 +143,8 @@
 }
 
 .selectedEnvironment {
-  padding-top: var(--sidebar-selected-environment-padding-top);
   padding-bottom: var(--sidebar-selected-environment-padding-bottom);
-
+  padding-top: var(--sidebar-selected-environment-padding-top);
   text-align: center;
 }
 
@@ -158,18 +157,18 @@
 }
 
 .title {
-  margin: 0;
+  color: var(--color-white);
   font-size: 18px;
   line-height: 3.17;
-  color: var(--color-white);
+  margin: 0;
 }
 
 .toggle {
-  font-size: 18px;
-  text-transform: lowercase;
   color: var(--color-light-greenish-100);
   cursor: pointer;
+  font-size: 18px;
   outline: none;
+  text-transform: lowercase;
   user-select: none;
 
   & p {
@@ -181,28 +180,28 @@
   border-bottom: 1px solid var(--color-light-steel-200);
 
   & ul {
+    margin-top: 24px;
     margin: 0;
     padding: 0;
-    margin-top: 24px;
   }
 
   & li {
-    padding: 15px;
-    list-style: none;
     border-top: 1px solid var(--color-light-greenish-20);
+    list-style: none;
+    padding: 15px;
   }
 
   & p {
-    margin: 0;
-    font-size: 12px;
     color: var(--color-white);
+    font-size: 12px;
+    margin: 0;
     text-transform: uppercase;
   }
 
   & p:last-child {
-    margin-top: 16px;
-    margin-bottom: 16px;
     font-size: 24px;
+    margin-bottom: 16px;
+    margin-top: 16px;
   }
 
   & small {
