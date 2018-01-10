@@ -171,7 +171,7 @@
 
 .title {
   color: var(--color-white);
-  font-size: 18px;
+  font-size: var(--sidebar-title-font-size);
   line-height: 3.17;
   margin: 0;
 }
@@ -179,7 +179,7 @@
 .toggle {
   color: var(--color-light-greenish-100);
   cursor: pointer;
-  font-size: 18px;
+  font-size: var(--sidebar-toggle-font-size);
   margin-bottom: 15px;
   margin-top: 0;
   outline: none;
@@ -208,19 +208,19 @@
 
   & p {
     color: var(--color-white);
-    font-size: 12px;
+    font-size: var(--sidebar-info-options-font-size);
     margin: 0;
     text-transform: uppercase;
   }
 
   & p:last-child {
-    font-size: 24px;
+    font-size: var(--sidebar-info-options-last-child-font-size);
     margin-bottom: 16px;
     margin-top: 16px;
   }
 
   & small {
-    font-size: 16px;
+    font-size: var(--sidebar-info-options-small-font-size);
   }
 }
 

@@ -5,50 +5,73 @@
   --sidebar-background-color: var(--color-light-carbon-40);
   --sidebar-header-padding: 15px;
   --sidebar-header-border-bottom: 1px solid var(--color-light-steel-200);
+
   --sidebar-menu-padding: 0;
   --sidebar-menu-color: var(--color-white);
   --sidebar-menu-border: none;
   --sidebar-menu-background: none;
+
   --sidebar-switch-container-padding-top: 15px;
   --sidebar-switch-container-padding-bottom: 15px;
+
   --sidebar-items-height: calc(100vh - 115px);
   --sidebar-items-list-padding: 12px 0;
-  --sidebar-item-font-size: 16px;
   --sidebar-item-color: var(--color-white);
   --sidebar-item-border: 1px solid transparent;
   --sidebar-item-icon-margin-right: 15px;
+
   --sidebar-item-hover-color: var(--color-light-greenish-100);
   --sidebar-item-hover-background-color: var(--color-light-carbon-100);
   --sidebar-item-hover-border-top-color: var(--color-light-steel-200);
   --sidebar-item-hover-border-bottom-color: var(--color-light-steel-200);
+
   --sidebar-item-selected-color: var(--sidebar-item-hover-color);
   --sidebar-item-selected-background-color: var(--sidebar-item-hover-background-color);
   --sidebar-item-selected-border-top-color: var(--sidebar-item-hover-border-top-color);
   --sidebar-item-selected-border-bottom-color: var(--sidebar-item-hover-border-bottom-color);
+
   --sidebar-text-link-color: inherit;
   --sidebar-text-link-padding: 12px 15px;
   --sidebar-text-link-margin:  0;
+
   --sidebar-item-text-link-padding-top: 27px;
   --sidebar-item-text-link-padding-bottom: 27px;
+
   --sidebar-options-background-color: var(--color-light-carbon-50);
   --sidebar-option-color: var(--color-white);
   --sidebar-option-font-size: 14px;
+
   --sidebar-collapsed-width: 78px;
   --sidebar-collapsed-header-icon-color: var(--color-light-greenish-100);
   --sidebar-collapsed-text-link-margin: 0;
+
   --sidebar-selected-environment-padding-top: 15px;
   --sidebar-selected-environment-padding-bottom: 15px;
+
+  --sidebar-menu-icon-width: 25px;
+  --sidebar-menu-icon-height: 18px;
+  --sidebar-info-options-font-size: 12px;
+  --sidebar-info-options-last-child-font-size: 24px;
+  --sidebar-info-options-small-font-size: 16px;
 }
 
 @media (--media-tablet) {
   :root {
     --sidebar-width: 192px;
+    --sidebar-brand-width: 100px;
+    --sidebar-title-font-size: 16px;
+    --sidebar-toggle-font-size: 16px;
+    --sidebar-item-font-size: 16px;
   }
 }
 
 @media (--media-desk) {
   :root {
     --sidebar-width: 222px;
+    --sidebar-brand-width: 115px;
+    --sidebar-title-font-size: 18px;
+    --sidebar-toggle-font-size: 18px;
+    --sidebar-item-font-size: 18px;
   }
 }
 
@@ -56,7 +79,8 @@
   :root {
     --sidebar-width: 320px;
     --sidebar-brand-width: 170px;
-    --sidebar-menu-icon-width: 25px;
-    --sidebar-menu-icon-height: 18px;
+    --sidebar-title-font-size: 18px;
+    --sidebar-toggle-font-size: 18px;
+    --sidebar-item-font-size: 20px;
   }
 }
