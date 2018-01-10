@@ -152,7 +152,7 @@ class Sidebar extends React.Component {
             tabIndex="0"
           >
             <a className={theme.link}>
-              <item.icon size={this.state.collapsed ? 25 : 21} />
+              <item.icon />
               <span>{item.title}</span>
             </a>
           </div>

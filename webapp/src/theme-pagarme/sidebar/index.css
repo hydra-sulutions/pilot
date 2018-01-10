@@ -102,6 +102,11 @@
     display: inline-block;
     vertical-align: middle;
   }
+
+  & svg {
+    width: var(--sidebar-text-link-icon-width);
+    height: var(--sidebar-text-link-icon-height);
+  }
 }
 
 .item > .link,

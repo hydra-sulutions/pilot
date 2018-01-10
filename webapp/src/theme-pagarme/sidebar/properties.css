@@ -63,6 +63,8 @@
     --sidebar-item-font-size: 16px;
     --sidebar-collapsed-width: 72px;
     --sidebar-option-font-size: 14px;
+    --sidebar-text-link-icon-width: 18px;
+    --sidebar-text-link-icon-height: 18px;
   }
 }
 
@@ -75,6 +77,8 @@
     --sidebar-item-font-size: 18px;
     --sidebar-collapsed-width: 78px;
     --sidebar-option-font-size: 16px;
+    --sidebar-text-link-icon-width: 21px;
+    --sidebar-text-link-icon-height: 21px;
   }
 }
 
@@ -87,5 +91,7 @@
     --sidebar-item-font-size: 20px;
     --sidebar-collapsed-width: 116px;
     --sidebar-option-font-size: 18px;
+    --sidebar-text-link-icon-width: 25px;
+    --sidebar-text-link-icon-height: 25px;
   }
 }
