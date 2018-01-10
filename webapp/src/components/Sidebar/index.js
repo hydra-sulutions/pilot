@@ -4,7 +4,6 @@ import { themr } from 'react-css-themr'
 import shortid from 'shortid'
 import MdMenu from 'react-icons/lib/md/menu'
 import cx from 'classnames'
-import PerfectScrollBar from 'react-perfect-scrollbar'
 import IconArrowUp from 'react-icons/lib/md/keyboard-arrow-up'
 import IconArrowDown from 'react-icons/lib/md/keyboard-arrow-down'
 import SegmentedSwitch from '../SegmentedSwitch'
@@ -187,33 +186,33 @@ class Sidebar extends React.Component {
           </button>
         </header>
 
-        {!this.state.collapsed &&
-          <div>
-            <div className={theme.switchContainer}>
-              <SegmentedSwitch
-                items={['live', 'test']}
-                selected={selectedEnvironment}
-                name={`${this.id}-live-test`}
-                onChange={onSwitchChange}
-              />
+        <div className={theme.section}>
+          {!this.state.collapsed &&
+            <div>
+              <div className={theme.switchContainer}>
+                <SegmentedSwitch
+                  items={['live', 'test']}
+                  selected={selectedEnvironment}
+                  name={`${this.id}-live-test`}
+                  onChange={onSwitchChange}
+                />
+              </div>
+              {this.renderInfos()}
             </div>
-            {this.renderInfos()}
-          </div>
-        }
+          }
 
-        {this.state.collapsed &&
-          <div className={theme.selectedEnvironment}>
-            <Tag key={selectedEnvironment}>{selectedEnvironment}</Tag>
-          </div>
-        }
+          {this.state.collapsed &&
+            <div className={theme.selectedEnvironment}>
+              <Tag key={selectedEnvironment}>{selectedEnvironment}</Tag>
+            </div>
+          }
 
-        <nav>
-          <PerfectScrollBar className={theme.items}>
+          <nav className={theme.items}>
             <ul>
               {this.renderList()}
             </ul>
-          </PerfectScrollBar>
-        </nav>
+          </nav>
+        </div>
       </div>
     )
   }
