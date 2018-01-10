@@ -153,6 +153,11 @@
   & .link svg {
     margin: var(--sidebar-collapsed-text-link-margin);
   }
+
+  & .menu svg {
+    width: var(--sidebar-collapsed-icon-width);
+    height: var(--sidebar-collapsed-icon-height);
+  }
 }
 
 .selectedEnvironment {
