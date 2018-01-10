@@ -35,13 +35,13 @@ const infos = {
   data: [
     {
       title: 'Disponível',
-      value: 'R$ 150000',
+      value: <p><small>R$</small> 150000</p>,
       actionTitle: 'Sacar',
       action: (a) => console.log(a),
     },
     {
       title: 'A receber',
-      value: 'R$ 70000',
+      value: <p><small>R$</small> 70000</p>,
       actionTitle: 'Antecipar',
       action: (a) => console.log(a),
     }

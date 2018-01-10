@@ -147,8 +147,11 @@
 }
 
 .info {
-  padding-left: 15px;
-  padding-right: 15px;
+  & .title,
+  & .toggle {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 
 .title {
@@ -169,4 +172,41 @@
   & p {
     margin: 0;
   }
+}
+
+.infoOptions {
+  border-bottom: 1px solid var(--color-light-steel-200);
+
+  & ul {
+    margin: 0;
+    padding: 0;
+    margin-top: 24px;
+  }
+
+  & li {
+    padding: 15px;
+    list-style: none;
+    border-top: 1px solid var(--color-light-greenish-20);
+  }
+
+  & p {
+    margin: 0;
+    font-size: 12px;
+    color: var(--color-white);
+    text-transform: uppercase;
+  }
+
+  & p:last-child {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    font-size: 24px;
+  }
+
+  & small {
+    font-size: 16px;
+  }
+}
+
+.showInfos {
+  background-color: var(--color-light-carbon-100);
 }

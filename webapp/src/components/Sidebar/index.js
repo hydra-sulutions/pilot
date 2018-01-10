@@ -56,8 +56,12 @@ class Sidebar extends React.Component {
       theme,
     } = this.props
 
+    const infoClasses = cx(theme.info, {
+      [theme.showInfos]: this.state.showInfos,
+    })
+
     return (
-      <div className={theme.info}>
+      <div className={infoClasses}>
         <p className={theme.title}>{infos.title}</p>
         <div
           className={theme.toggle}
@@ -73,7 +77,7 @@ class Sidebar extends React.Component {
         </div>
 
         {this.state.showInfos &&
-          <div>
+          <div className={theme.infoOptions}>
             <ul>
               {infos.data.map(info => (
                 <li>
@@ -81,6 +85,7 @@ class Sidebar extends React.Component {
                   <p>{info.value}</p>
                   <Button
                     onClick={info.action}
+                    fill="outline"
                   >
                     {info.actionTitle}
                   </Button>
@@ -229,6 +234,7 @@ Sidebar.propTypes = {
     menu: PropTypes.string,
     switchContainer: PropTypes.string,
     selectedEnvironment: PropTypes.string,
+    showInfos: PropTypes.string,
   }),
   title: PropTypes.string.isRequired,
   logo: PropTypes.string.isRequired,
