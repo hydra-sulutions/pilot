@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { themr } from 'react-css-themr'
+import ThemeConsumer from '../ThemeConsumer'
 
-const applyThemr = themr('UIButton')
+const consumeTheme = ThemeConsumer('UIButton')
 
 function Button ({
   base,
@@ -88,4 +88,4 @@ Button.defaultProps = {
   onClick: null,
 }
 
-export default applyThemr(Button)
+export default consumeTheme(Button)

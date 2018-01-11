@@ -9,7 +9,7 @@ import {
   string,
 } from 'prop-types'
 
-import { themr } from 'react-css-themr'
+import ThemeConsumer from '../ThemeConsumer'
 import shortid from 'shortid'
 
 import {
@@ -19,7 +19,7 @@ import {
 
 import TabItem from './TabItem'
 
-const applyThemr = themr('UITabBar')
+const consumeTheme = ThemeConsumer('UITabBar')
 
 class TabBar extends React.Component {
   constructor (props) {
@@ -89,4 +89,4 @@ TabBar.defaultProps = {
   onTabChange: null,
 }
 
-export default applyThemr(TabBar)
+export default consumeTheme(TabBar)

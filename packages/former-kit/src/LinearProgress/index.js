@@ -1,5 +1,5 @@
 import React from 'react'
-import { themr } from 'react-css-themr'
+import ThemeConsumer from '../ThemeConsumer'
 import PropTypes from 'prop-types'
 import {
   Motion,
@@ -7,7 +7,7 @@ import {
 } from 'react-motion'
 import classnames from 'classnames'
 
-const applyThemr = themr('UILinearProgress')
+const consumeTheme = ThemeConsumer('UILinearProgress')
 
 const Linear = ({
   theme,
@@ -92,4 +92,4 @@ Linear.defaultProps = {
   base: 'light',
 }
 
-export default applyThemr(Linear)
+export default consumeTheme(Linear)

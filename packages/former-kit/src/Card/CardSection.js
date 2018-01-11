@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import IconArrowDown from 'react-icons/lib/md/keyboard-arrow-down'
-import { themr } from 'react-css-themr'
+import ThemeConsumer from '../ThemeConsumer'
 
 const applyTheme = themr('UICard')
 

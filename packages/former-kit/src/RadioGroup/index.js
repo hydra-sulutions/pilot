@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import shortid from 'shortid'
-import { themr } from 'react-css-themr'
+import ThemeConsumer from '../ThemeConsumer'
 
-const applyThemr = themr('UIRadioGroup')
+const consumeTheme = ThemeConsumer('UIRadioGroup')
 
 
 class RadioGroup extends React.Component {
@@ -104,4 +104,4 @@ RadioGroup.defaultProps = {
   success: '',
 }
 
-export default applyThemr(RadioGroup)
+export default consumeTheme(RadioGroup)

@@ -1,7 +1,7 @@
-import { themr } from 'react-css-themr'
+import ThemeConsumer from '../ThemeConsumer'
 
 import Input from './Input'
 
-const applyThemr = themr('UIInput')
+const consumeTheme = ThemeConsumer('UIInput')
 
-export default applyThemr(Input)
+export default consumeTheme(Input)

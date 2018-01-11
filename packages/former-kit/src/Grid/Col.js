@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import { themr } from 'react-css-themr'
+import ThemeConsumer from '../ThemeConsumer'
 import {
   shape,
   string,
@@ -9,7 +9,7 @@ import {
   bool,
 } from 'prop-types'
 
-const applyThemr = themr('UIGrid')
+const consumeTheme = ThemeConsumer('UIGrid')
 
 const classnames = ({ theme, className, desk, tv, tablet, palm, alignEnd }) =>
   classNames(
@@ -76,4 +76,4 @@ Col.defaultProps = {
   className: null,
 }
 
-export default applyThemr(Col)
+export default consumeTheme(Col)

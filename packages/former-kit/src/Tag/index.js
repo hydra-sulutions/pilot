@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { themr } from 'react-css-themr'
+import ThemeConsumer from '../ThemeConsumer'
 
-const applyThemr = themr('UITag')
+const consumeTheme = ThemeConsumer('UITag')
 
 const Tag = ({
   theme,
@@ -20,4 +20,4 @@ Tag.propTypes = {
   children: PropTypes.string.isRequired,
 }
 
-export default applyThemr(Tag)
+export default consumeTheme(Tag)
